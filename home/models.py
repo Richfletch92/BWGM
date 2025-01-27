@@ -25,7 +25,7 @@ class Series(models.Model):
     last_air_date = models.DateField(null=True, blank=True)
     number_of_seasons = models.IntegerField(null=True, blank=True)
     average_rating = models.FloatField(null=True, blank=True)
-    
+
     def __str__(self):
         return self.title
 
@@ -36,6 +36,6 @@ class Series(models.Model):
 #     episode_count = models.IntegerField()
 #     desciption = models.TextField()
 #     air_date = models.DateField()
-    
+#
 #     def __str__(self):
 #         return f"{self.series.title} | Season {self.season_number}"
