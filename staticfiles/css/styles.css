@@ -1,0 +1,60 @@
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+:root {
+    --primary-color: #ffbc00;
+    --secondary-color: #000000;
+    --shadow-color: #505050;
+    --font-color: #000000;
+    --primary-font: 'Inter', sans-serif;
+    }
+
+body {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-color)  0%, var(--secondary-color) 100%, var(--secondary-color) 100%);
+    margin: 0;
+    padding: 0;
+    font-family: var(--primary-font);
+    color: var(--font-color);
+}
+
+h1 {
+    font-weight: 700;
+}
+
+.scroll-container {
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.scroll-container img {
+    margin-right: 10px;
+    border-radius: 10px;
+    width: 200px;
+    height: 300px;
+    transition: box-shadow 0.5s ease-in-out;
+
+}
+
+.scroll-container img:hover {
+    box-shadow: 0px 0px 10px 5px #505050;
+}
+
+/* Custom scrollbar styling */
+.scroll-container::-webkit-scrollbar {
+    height: 12px; /* Height of the horizontal scrollbar */
+}
+
+.scroll-container::-webkit-scrollbar-track {
+    background: transparent; /* Background of the scrollbar track */
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+    background: #888; /* Color of the scrollbar thumb */
+    border-radius: 6px; /* Rounded corners for the scrollbar thumb */
+}
+
+.scroll-container::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Color of the scrollbar thumb on hover */
+}
