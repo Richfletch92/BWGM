@@ -2,7 +2,7 @@ from django.db import models
 
 
 # Create your models here.
-class Movie(models.Model):
+class MovieList(models.Model):
     tmdb_id = models.IntegerField(unique=True)
     title = models.CharField(max_length=200)
     description = models.TextField()
@@ -16,7 +16,7 @@ class Movie(models.Model):
 
 
 # Add Series model here 
-class Series(models.Model):
+class SeriesList(models.Model):
     tmdb_id = models.IntegerField(unique=True)
     title = models.CharField(max_length=200)
     description = models.TextField()
