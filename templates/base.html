@@ -41,24 +41,35 @@
                     </li>
                     {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link nav-text" aria-current="page" href="">Logout</a>
+                        <a class="nav-link nav-text" aria-current="page" href="{% url 'account_logout' %}">Logout</a>
                     </li>
                     {% else %}
                     <li class="nav-item">
-                        <a class="nav-link nav-text" aria-current="page" href="">Register</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link nav-text" aria-current="page" href="">Login</a>
+                        <a class="nav-link nav-text" aria-current="page" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
                     </li>
                     {% endif %}
-
                 </ul>
             </div>
         </div>
     </nav>
+
     {% block content %}
     {% endblock content %}
-    <!-- Bootstrap JS -->
+
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModalLabel">Login</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    {% include 'account/login.html' %}
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer class="mt-auto py-3">
