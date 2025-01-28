@@ -10,3 +10,21 @@ def home(request):
         'home/index.html',
         {'movies': movies, 'series': series}
     )
+
+
+def movies(request):
+    movies = MovieList.objects.all()
+    return render(
+        request,
+        'home/movies.html',
+        {'movies': movies}
+    )
+
+
+def series(request):
+    series = SeriesList.objects.all()
+    return render(
+        request,
+        'home/series.html',
+        {'series': series}
+    )

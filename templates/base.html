@@ -34,7 +34,10 @@
                             href="{% url 'home' %}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link nav-text" aria-current="page" href="">Movies</a>
+                        <a class="nav-link nav-text" aria-current="page" href="{% url 'movies' %}">Movies</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-text" aria-current="page" href="{% url 'series' %}">Series</a>
                     </li>
                     {% if user.is_authenticated %}
                     <li class="nav-item">

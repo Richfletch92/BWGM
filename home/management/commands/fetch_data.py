@@ -44,7 +44,7 @@ class Command(BaseCommand):
 
         # Fetch popular TV series
         for page in range(1, 6):  # Fetch first 5 pages of popular TV series
-            data = fetch_tv_series(page, language='en-US')
+            data = fetch_tv_series(page)
             if data:
                 for series_data in data['results']:
                     tmdb_id = series_data['id']

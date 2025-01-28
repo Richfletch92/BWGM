@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="container">
+    <h1>Series</h1>
+    <div class="row">
+        {% for series in series %}
+        <div class="col-6 col-sm-3 col-lg-2 mb-4">
+            <div class="movie-poster">
+                <img src="{{ series.poster_path }}" alt="{{ series.title }} poster" class="img-fluid" />
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock content %}
