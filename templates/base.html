@@ -1,5 +1,5 @@
 {% load static %}
-
+{% load livereload_tags %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,14 +15,52 @@
 </head>
 
 <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'home' %}">
+                <span class="logo">
+                    <span>B</span><span>i</span><span>n</span><span>g</span><span>e</span><span>-</span><span>W</span><span>a</span><span>t</span><span>c</span><span>h</span><span>e</span><span>r</span><span>s</span>
+                </span>
+            </a>
+            <button class="navbar-toggler nav-text" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation"></button>
+            <span class="navbar-toggler-icon nav-text"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link nav-text {% if request.path == home_url %}active" aria-current="page{% endif %}"
+                            href="{% url 'home' %}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-text" aria-current="page" href="">Movies</a>
+                    </li>
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link nav-text" aria-current="page" href="">Logout</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link nav-text" aria-current="page" href="">Register</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-text" aria-current="page" href="">Login</a>
+                    </li>
+                    {% endif %}
+
+                </ul>
+            </div>
+        </div>
+    </nav>
     {% block content %}
     {% endblock content %}
     <!-- Bootstrap JS -->
 
     <!-- Footer -->
     <footer class="mt-auto py-3">
-        <p class="m-0 text-center text-white">Made by Code Instituters</p>
-        <p class="m-0 text-center text-white">Follow us: 
+        <p class="m-0 text-center text-white">Made by Binge-Watchers</p>
+        <p class="m-0 text-center text-white">Follow us:
             <i class="fa-brands fa-facebook-square ms-3"></i>
             <i class="fa-brands fa-twitter-square ms-3"></i>
             <i class="fa-brands fa-instagram-square ms-3"></i>
