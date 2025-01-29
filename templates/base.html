@@ -20,72 +20,57 @@
     <link rel="stylesheet" href="{% static '/css/styles.css' %}">
 </head>
 
-<body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="{% url 'home' %}">
-                <span class="logo">
-                    <span>B</span><span>i</span><span>n</span><span>g</span><span>e</span><span>-</span><span>W</span><span>a</span><span>t</span><span>c</span><span>h</span><span>e</span><span>r</span><span>s</span>
-                </span>
-            </a>
-            <button class="navbar-toggler nav-text" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
-                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation"></button>
-            <span class="navbar-toggler-icon nav-text"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarText">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link nav-text {% if request.path == home_url %}current"
-                            aria-current="page{% endif %}" href="{% url 'home' %}">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link nav-text {% if request.path == movies_url %}current"
-                            aria-current="page{% endif %}" href="{% url 'movies' %}">Movies</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link nav-text {% if request.path == series_url %}current"
-                            aria-current="page{% endif %}" href="{% url 'series' %}">Series</a>
-                    </li>
-                    {% if user.is_authenticated %}
-                    <li class="nav-item">
-                        <a class="nav-link {% if request.path == logout_url %}current{% endif %}" aria-current="page"
-                            href="{% url 'account_logout' %}">Logout</a>
-                    </li>
-                    {% else %}
-                    <li class="nav-item">
-                        <a class="nav-link nav-text {% if request.path == signup_url %}current{% endif %}" aria-current="page"
-                            href="{% url 'account_signup' %}">Register</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link nav-text {% if request.path == login_url %}active{% endif %}" aria-current="page"
-                            href="{% url 'account_login' %}">Login</a>
-                    </li>
-                    {% endif %}
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    {% block content %}
-    {% endblock content %}
-    
-
-    <!-- Login Modal
-    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="loginModalLabel">Login</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    {% include 'account/login.html' %}
+<body class="d-flex flex-column min-vh-100">
+    <div class="wrapper">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="{% url 'home' %}">
+                    <span class="logo">
+                        <span>B</span><span>i</span><span>n</span><span>g</span><span>e</span><span>-</span><span>W</span><span>a</span><span>t</span><span>c</span><span>h</span><span>e</span><span>r</span><span>s</span>
+                    </span>
+                </a>
+                <button class="navbar-toggler nav-text" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+                    aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation"></button>
+                <span class="navbar-toggler-icon nav-text"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarText">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link nav-text {% if request.path == home_url %}current{% endif %}" aria-current="page"
+                                href="{% url 'home' %}">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link nav-text {% if request.path == movies_url %}current{% endif %}" aria-current="page"
+                                href="{% url 'movies' %}">Movies</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link nav-text {% if request.path == series_url %}current{% endif %}" aria-current="page"
+                                href="{% url 'series' %}">Series</a>
+                        </li>
+                        {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link nav-text {% if request.path == logout_url %}current{% endif %}" aria-current="page"
+                                href="{% url 'account_logout' %}">Logout</a>
+                        </li>
+                        {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link nav-text {% if request.path == signup_url %}current{% endif %}" aria-current="page"
+                                href="{% url 'account_signup' %}">Register</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link nav-text {% if request.path == login_url %}current{% endif %}" aria-current="page"
+                                href="{% url 'account_login' %}">Login</a>
+                        </li>
+                        {% endif %}
+                    </ul>
                 </div>
             </div>
-        </div>
-    </div> -->
+        </nav>
 
+        {% block content %}
+        {% endblock content %}
+    </div>
     <!-- Footer -->
     <footer class="mt-auto py-3">
         <p class="m-0 text-center text-white">Made by Binge-Watchers</p>
