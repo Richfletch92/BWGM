@@ -15,7 +15,7 @@ class MovieList(models.Model):
         return f"{self.title} | {self.release_date}"
 
 
-# Add Series model here 
+# Add Series model here
 class SeriesList(models.Model):
     tmdb_id = models.IntegerField(unique=True)
     title = models.CharField(max_length=200)
