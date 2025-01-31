@@ -23,7 +23,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="{% static '/images/favicon-32x32.png' %}">
     <link rel="icon" type="image/png" sizes="16x16" href="{% static '/images/favicon-16x16.png' %}">
     <link rel="manifest" href="{% static '/images/site.webmanifest' %}">
-    
+
 </head>
 
 <body class="d-flex flex-column min-vh-100">
@@ -36,49 +36,66 @@
                         <span>B</span><span>i</span><span>n</span><span>g</span><span>e</span><span>-</span><span>W</span><span>a</span><span>t</span><span>c</span><span>h</span><span>e</span><span>r</span><span>s</span>
                     </span>
                 </a>
-                <button class="navbar-toggler nav-text" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
-                    aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation"></button>
+                <button class="navbar-toggler nav-text" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false"
+                    aria-label="Toggle navigation"></button>
                 <span class="navbar-toggler-icon nav-text"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarText">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link nav-text {% if request.path == home_url %}current{% endif %}" aria-current="page"
-                                href="{% url 'home' %}">Home</a>
+                            <a class="nav-link nav-text {% if request.path == home_url %}current{% endif %}"
+                                aria-current="page" href="{% url 'home' %}">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link nav-text {% if request.path == movies_url %}current{% endif %}" aria-current="page"
-                                href="{% url 'movies' %}">Movies</a>
+                            <a class="nav-link nav-text {% if request.path == movies_url %}current{% endif %}"
+                                aria-current="page" href="{% url 'movies' %}">Movies</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link nav-text {% if request.path == series_url %}current{% endif %}" aria-current="page"
-                                href="{% url 'series' %}">Series</a>
+                            <a class="nav-link nav-text {% if request.path == series_url %}current{% endif %}"
+                                aria-current="page" href="{% url 'series' %}">Series</a>
                         </li>
                         {% if user.is_authenticated %}
                         <li class="nav-item">
-                            <a class="nav-link nav-text {% if request.path == logout_url %}current{% endif %}" aria-current="page"
-                                href="{% url 'account_logout' %}">Logout</a>
+                            <a class="nav-link nav-text {% if request.path == logout_url %}current{% endif %}"
+                                aria-current="page" href="{% url 'account_logout' %}">Logout</a>
                         </li>
                         {% else %}
                         <li class="nav-item">
-                            <a class="nav-link nav-text {% if request.path == signup_url %}current{% endif %}" aria-current="page"
-                                href="{% url 'account_signup' %}">Register</a>
+                            <a class="nav-link nav-text {% if request.path == signup_url %}current{% endif %}"
+                                aria-current="page" href="{% url 'account_signup' %}">Register</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link nav-text {% if request.path == login_url %}current{% endif %}" aria-current="page"
-                                href="{% url 'account_login' %}">Login</a>
+                            <a class="nav-link nav-text {% if request.path == login_url %}current{% endif %}"
+                                aria-current="page" href="{% url 'account_login' %}">Login</a>
                         </li>
                         {% endif %}
                     </ul>
                 </div>
             </div>
         </nav>
+        <!-- displaying Django messages -->
+        <div class="container">
+            <div class="row">
+            <div class="col-md-8 offset-md-2">
+                {% for message in messages %}
+                <div class="alert {{ message.tags }} alert-dismissible
+                fade show" id="msg" role="alert">
+                {{ message | safe }}
+                    <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                {% endfor %}
+            </div>
+            </div>
+        </div>
 
         {% block content %}
         {% endblock content %}
     </div>
     <!-- Footer -->
-    <footer class="mt-auto py-3">
+    <footer class="py-3">
         <p class="m-0 text-center text-white">Made by Binge-Watchers</p>
         <p class="m-0 text-center text-white">Follow us:
             <i class="fa-brands fa-facebook-square ms-3"></i>

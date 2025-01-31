@@ -7,62 +7,80 @@
             <img src="{{ movie.poster_path }}" alt="{{ movie.title }} poster" class="img-fluid" />
         </div>
         <div class="col-12 col-md-6">
-            <div class="details-box text-center">
-                <h1>{{ movie.title }}</h1>
-                <div class="row details-font">
-                    <div class="col-3">
-                        <p><u>Released</u><br> {{ movie.release_date|date:"d/m/Y" }}</p>
-                    </div>
-                    <div class="col-3">
-                        <p><u>Runtime</u><br> {{ movie.runtime }} minutes</p>
-                    </div>
-                    <div class="col-3">
-                        <p><u>Genres</u><br>
-                            {% for genre in genres %}
-                            {{ genre.genre.name }}{% if not forloop.last %}, {% endif %}
-                            {% endfor %}
-                        </p>
-                    </div>
-                    <div class="col-3">
-                        <p><u>Rating</u><br> {{ movie.average_rating }}</p>
-                    </div>
-                </div>
-                <p>{{ movie.description }}</p>
-                <div class="row">
-                    <div class="col-12">
-                        <i class="fa-regular fa-comment"></i> {{ review_count }} Reviews
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-8 card mb-4  mt-3 ">
-                        <h3>Reviews:</h3>
-                        <div class="card-body">
-                            <!-- We want a for loop inside the empty control tags
-                          to iterate through each comment in comments -->
-                            {% for review in reviews %}
-                            <div class="p-2 reviews
-                          {% if not review.approved and review.author == user %}
-                          faded{% elif not review.approved %} d-none{% endif %}">
-                                <p class="font-weight-bold">
-                                    {{ review.author }}
-                                    <span class="font-weight-normal">
-                                        {{ review.date_created }}
-                                    </span> wrote:
-                                </p>
-                                <div id="review{{ review.id }}">
-                                    {{ review.content | linebreaks }}
-                                </div>
-                                {% if not review.approved and review.user == user %}
-                                <p class="approval">
-                                    This review is awaiting approval
-                                </p>
-                                {% endif %}
-                            </div>
-                            <!-- Our for loop ends here -->
-                            {% endfor %}
+            <div class="details-box">
+                <div class="text-center">
+                    <h1>{{ movie.title }}</h1>
+                    <div class="row details-font">
+                        <div class="col-3">
+                            <p><u>Released</u><br> {{ movie.release_date|date:"d/m/Y" }}</p>
+                        </div>
+                        <div class="col-3">
+                            <p><u>Runtime</u><br> {{ movie.runtime }} minutes</p>
+                        </div>
+                        <div class="col-3">
+                            <p><u>Genres</u><br>
+                                {% for genre in genres %}
+                                {{ genre.genre.name }}{% if not forloop.last %}, {% endif %}
+                                {% endfor %}
+                            </p>
+                        </div>
+                        <div class="col-3">
+                            <p><u>Rating</u><br> {{ movie.average_rating }}/10</p>
                         </div>
                     </div>
+                    <p class="">{{ movie.description }}</p>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="text-end mb-3">
+                                <i class="fa-regular fa-comment"></i> {{ review_count }} Reviews
+                            </div>
+                            <div class="scrollable-reviews mb-3">
+                                {% for review in reviews %}
+                                <div class="review-box {% if not review.approved and review.user != user %} d-none{% elif not review.approved %} faded{% endif %}">
+                                    <p><strong>{{ review.user }}</strong> rated it {{ review.rating }}/10</p>
+                                    <p>{{ review.content }}</p>
+                                    <p><small>Reviewed on {{ review.date_created|date:"h:iA dS M y" }}</small></p>
+                                </div>
+                                {% empty %}
+                                <p>No reviews yet.</p>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <h2>Write a Review</h2>
+                    <button type="button" class="draft-btn" data-bs-toggle="modal" data-bs-target="#draftModal">Draft</button>
                 </div>
             </div>
         </div>
-        {% endblock content %}
+    </div>
+</div>
+
+<!-- Draft Modal -->
+<div class="modal fade" id="draftModal" tabindex="-1" role="dialog" aria-labelledby="draftModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="draftModalLabel">Save Draft</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                {% if user.is_authenticated %}
+                <h3>Leave a review:</h3>
+                <p>All reviews need to be approved by an admin.</p>
+                <p>Posting as: <strong>{{ user.username }}</strong></p>
+                <form id="reviewForm" method="post" style="margin-top: 1.3em;">
+                    {{ form }}
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-primary mb-3">Save Draft</button>
+                </form>
+                {% else %}
+                <p>Log in to leave a review.</p>
+                {% endif %}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models import Avg
 
 
 class MovieList(models.Model):
@@ -9,7 +10,12 @@ class MovieList(models.Model):
     poster_path = models.URLField()
     release_date = models.DateField()
     runtime = models.IntegerField(null=True, blank=True)
-    average_rating = models.FloatField(null=True, blank=True)
+    
+    def average_rating(self):
+        avg_rating = self.moviereview_set.aggregate(Avg('rating'))['rating__avg']
+        if avg_rating is not None:
+            return round(avg_rating, 1)
+        return None
 
     def __str__(self):
         return f"{self.title} | {self.release_date}"
@@ -50,6 +56,9 @@ class MovieReview(models.Model):
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
     approved = models.BooleanField(default=False)
+
+    class Meta:
+        ordering = ['date_created']
 
     def __str__(self):
         return f"Review by {self.user.username} on {self.movie.title}"
