@@ -4,9 +4,11 @@ from home.utils import (
     fetch_movies,
     fetch_movie_details,
     fetch_tv_series,
-    fetch_tv_series_details
+    fetch_tv_series_details,
+    fetch_season_details,
+    fetch_genres
 )
-from home.models import MovieList, SeriesList
+from home.models import MovieList, SeriesList, Season, Genre, MovieGenre, SeriesGenre
 
 
 class Command(BaseCommand):
@@ -15,6 +17,18 @@ class Command(BaseCommand):
     )
 
     def handle(self, *args, **kwargs):
+        # Fetch genres
+        genre_data = fetch_genres()
+        if genre_data:
+            for genre in genre_data['genres']:
+                Genre.objects.update_or_create(
+                    id=genre['id'],
+                    defaults={'name': genre['name']}
+                )
+        self.stdout.write(
+            self.style.SUCCESS('Genres fetched and stored successfully!')
+        )
+
         # Fetch popular movies
         for page in range(1, 6):  # Fetch first 5 pages of popular movies
             data = fetch_movies(page)
@@ -24,7 +38,7 @@ class Command(BaseCommand):
                     # Fetch detailed data
                     details = fetch_movie_details(tmdb_id)
                     if details:
-                        MovieList.objects.update_or_create(
+                        movie, created = MovieList.objects.update_or_create(
                             tmdb_id=tmdb_id,
                             defaults={
                                 'title': details['title'],
@@ -38,6 +52,16 @@ class Command(BaseCommand):
                                 'runtime': details.get('runtime', None),
                             }
                         )
+                        # Fetch and store genres
+                        for genre in details['genres']:
+                            genre_obj, _ = Genre.objects.get_or_create(
+                                id=genre['id'],
+                                defaults={'name': genre['name']}
+                            )
+                            MovieGenre.objects.update_or_create(
+                                movie=movie,
+                                genre=genre_obj
+                            )
         self.stdout.write(
             self.style.SUCCESS('Movies fetched and stored successfully!')
         )
@@ -51,7 +75,7 @@ class Command(BaseCommand):
                     # Fetch detailed data
                     details = fetch_tv_series_details(tmdb_id)
                     if details:
-                        SeriesList.objects.update_or_create(
+                        series, created = SeriesList.objects.update_or_create(
                             tmdb_id=tmdb_id,
                             defaults={
                                 'title': details['name'],
@@ -69,6 +93,34 @@ class Command(BaseCommand):
                                 ),
                             }
                         )
+                        # Fetch and store genres
+                        for genre in details['genres']:
+                            genre_obj, _ = Genre.objects.get_or_create(
+                                id=genre['id'],
+                                defaults={'name': genre['name']}
+                            )
+                            SeriesGenre.objects.update_or_create(
+                                series=series,
+                                genre=genre_obj
+                            )
+                        # Fetch and store season details
+                        for season_number in range(1, series.number_of_seasons + 1):
+                            season_details = fetch_season_details(tmdb_id, season_number)
+                            if season_details:
+                                first_air_date = season_details.get('air_date', None)
+                                if not first_air_date and season_details['episodes']:
+                                    first_air_date = season_details['episodes'][0].get('air_date', None)
+                                if first_air_date:
+                                    Season.objects.update_or_create(
+                                        series=series,
+                                        season_number=season_number,
+                                        defaults={
+                                            'episode_count': len(season_details['episodes']),
+                                            'description': season_details['overview'],
+                                            'first_air_date': first_air_date,
+                                            'last_air_date': season_details.get('air_date', None),
+                                        }
+                                    )
         self.stdout.write(
             self.style.SUCCESS('TV series fetched and stored successfully!')
         )

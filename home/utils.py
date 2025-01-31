@@ -54,3 +54,24 @@ def fetch_tv_series_details(tmdb_id):
     if response.status_code == 200:
         return response.json()
     return None
+
+
+def fetch_season_details(tmdb_id, season_number):
+    """Fetch season details from TMDb."""
+    url = (
+        f"{BASE_URL}/tv/{tmdb_id}/season/{season_number}?api_key={API_KEY}"
+        f"&language=en-US"
+    )
+    response = requests.get(url)
+    if response.status_code == 200:
+        return response.json()
+    return None
+
+
+def fetch_genres():
+    """Fetch genres from TMDb."""
+    url = f"{BASE_URL}/genre/movie/list?api_key={API_KEY}&language=en-US"
+    response = requests.get(url)
+    if response.status_code == 200:
+        return response.json()
+    return None

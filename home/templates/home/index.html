@@ -8,7 +8,9 @@
         <div class="scroll-container">
             {% for movie in movies %}
             <div class="">
-                <img src="{{ movie.poster_path }}" alt="{{ movie.title }} poster" />
+                <a href="{% url 'movie_detail' movie.tmdb_id %}">
+                    <img src="{{ movie.poster_path }}" alt="{{ movie.title }} poster" />
+                </a>
             </div>
             {% endfor %}
         </div>
@@ -20,7 +22,7 @@
         <div class="scroll-container">
             {% for series in series %}
             <div class="">
-                <img src="{{ series.poster_path }}" alt="{{ series.title }} poster" />
+                    <img src="{{ series.poster_path }}" alt="{{ series.title }} poster" />
             </div>
             {% endfor %}
         </div>

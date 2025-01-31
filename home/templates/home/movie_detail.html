@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-md-6 details-poster">
+            <img src="{{ movie.poster_path }}" alt="{{ movie.title }} poster" class="img-fluid" />
+        </div>
+        <div class="col-12 col-md-6">
+            <div class="details-box text-center">
+                <h1>{{ movie.title }}</h1>
+                <div class="row details-font">
+                    <div class="col-3">
+                        <p><u>Released</u><br> {{ movie.release_date|date:"d/m/Y" }}</p>
+                    </div>
+                    <div class="col-3">
+                        <p><u>Runtime</u><br> {{ movie.runtime }} minutes</p>
+                    </div>
+                    <div class="col-3">
+                        <p><u>Genres</u><br>
+                            {% for genre in genres %}
+                            {{ genre.genre.name }}{% if not forloop.last %}, {% endif %}
+                            {% endfor %}
+                        </p>
+                    </div>
+                    <div class="col-3">
+                        <p><u>Rating</u><br> {{ movie.average_rating }}</p>
+                    </div>
+                </div>
+                <p>{{ movie.description }}</p>
+                <div class="row">
+                    <div class="col-12">
+                        <i class="fa-regular fa-comment"></i> {{ review_count }} Reviews
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-8 card mb-4  mt-3 ">
+                        <h3>Reviews:</h3>
+                        <div class="card-body">
+                            <!-- We want a for loop inside the empty control tags
+                          to iterate through each comment in comments -->
+                            {% for review in reviews %}
+                            <div class="p-2 reviews
+                          {% if not review.approved and review.author == user %}
+                          faded{% elif not review.approved %} d-none{% endif %}">
+                                <p class="font-weight-bold">
+                                    {{ review.author }}
+                                    <span class="font-weight-normal">
+                                        {{ review.date_created }}
+                                    </span> wrote:
+                                </p>
+                                <div id="review{{ review.id }}">
+                                    {{ review.content | linebreaks }}
+                                </div>
+                                {% if not review.approved and review.user == user %}
+                                <p class="approval">
+                                    This review is awaiting approval
+                                </p>
+                                {% endif %}
+                            </div>
+                            <!-- Our for loop ends here -->
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endblock content %}

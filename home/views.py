@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import MovieList, SeriesList
+from .models import MovieList, SeriesList, MovieGenre, MovieReview
 
 
 def home(request):
@@ -27,4 +27,21 @@ def series(request):
         request,
         'home/series.html',
         {'series': series}
+    )
+
+
+def movie_detail(request, tmdb_id):
+    movie = MovieList.objects.get(tmdb_id=tmdb_id)
+    genres = MovieGenre.objects.filter(movie=movie).select_related('genre')
+    reviews = MovieReview.objects.filter(movie=movie, approved=True).order_by('-date_created')
+    review_count = reviews.count()
+    return render(
+        request,
+        'home/movie_detail.html',
+        {
+            'movie': movie,
+            'genres': genres,
+            'reviews': reviews,
+            'review_count': review_count
+        }
     )
