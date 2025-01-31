@@ -3,19 +3,31 @@
 :root {
     --primary-color: #f7c600;
     --secondary-color: #000000;
+    --container-color: #191919;
     --shadow-color: #505050;
-    --font-color: #000000;
+    --font-color: #ffffff;
+    --logo-color: #f2f0f1;
     --primary-font: 'Inter', sans-serif;
     --logo-font: 'Atma', cursive;
-    --logo-color: #f2f0f1;
 }
 
 body {
     background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-color) 0%, var(--secondary-color) 100%, var(--secondary-color) 100%);
+    background-size: cover;
     margin: 0;
     padding: 0;
     font-family: var(--primary-font);
     color: var(--font-color);
+}
+
+.wrapper {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.wrapper > *:not(footer) {
+    flex: 1;
 }
 
 .navbar {
@@ -35,7 +47,11 @@ body {
 }
 
 .nav-text {
-    color: #f2f0f1;
+    color: #818181;
+}
+
+.current {
+    color: #ffffff; /* Change this to your desired color */
 }
 
 .nav-text:hover {
@@ -102,24 +118,144 @@ h1 {
     background: #555; /* Color of the scrollbar thumb on hover */
 }
 
+/* Form Styling */
+.login-form,
+.signup-form,
+.logout-form {
+    max-width: 400px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: var(--container-color); /* Use container color */
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 1px var(--shadow-color);
+}
+
+.login-form h1,
+.signup-form h1,
+.logout-form h1 {
+    font-family: var(--logo-font);
+    font-size: 2rem;
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.login-form label,
+.signup-form label,
+.logout-form label {
+    font-weight: bold;
+    color: var(--font-color);
+}
+
+.login-form input[type="text"],
+.login-form input[type="password"],
+.login-form input[type="email"],
+.signup-form input[type="text"],
+.signup-form input[type="password"],
+.signup-form input[type="email"],
+.logout-form input[type="text"],
+.logout-form input[type="password"],
+.logout-form input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid var(--shadow-color);
+    border-radius: 5px;
+    box-shadow: inset 0px 0px 5px var(--shadow-color);
+}
+
+.login-form .btn,
+.signup-form .btn,
+.logout-form .btn {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.login-form .btn-primary,
+.signup-form .btn-primary,
+.logout-form .btn-primary {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+.login-form .btn-secondary,
+.signup-form .btn-secondary,
+.logout-form .btn-secondary {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+}
+
+.login-form .btn:hover,
+.signup-form .btn:hover,
+.logout-form .btn:hover {
+    opacity: 0.9;
+}
+
+.login-form a,
+.signup-form a,
+.logout-form a {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.login-form a:hover,
+.signup-form a:hover,
+.logout-form a:hover {
+    text-decoration: underline;
+}
+
+.details-box {
+    padding: 20px;
+    background-color: var(--container-color);
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 1px var(--shadow-color);
+}
+
+.details-font {
+    font-size: 0.75rem;
+}
+
+.details-poster img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+footer {
+    background-color: var(--secondary-color);
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
 /* Media Queries for responsive design */
 @media (min-width: 576px) {
     .poster img {
         width: 150px;
-        height: 225px;
+        height: 200px;
     }
 }
 
 @media (min-width: 768px) {
     .poster img {
-        width: 175px;
-        height: 262px;
+        width: 185px;
+        height: 222px;
     }
 }
 
 @media (min-width: 992px) {
     .poster img {
         width: 200px;
-        height: 300px;
+        height: 250px;
     }
 }
