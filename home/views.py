@@ -78,24 +78,23 @@ def movie_detail(request, tmdb_id):
     )
 
 
-def review_edit(request, review_id):
-    review = get_object_or_404(MovieReview, id=review_id)
-    if request.user == review.user:
-        if request.method == "POST":
-            form = ReviewForm(data=request.POST, instance=review)
-            if form.is_valid():
-                form.save()
-                messages.add_message(request, messages.SUCCESS, 'Review updated successfully!')
-                return HttpResponseRedirect(reverse('movie_detail', args=[review.movie.tmdb_id]))
-            else:
-                for error in form.errors.values():
-                    messages.add_message(request, messages.ERROR, error)
-        form = ReviewForm(instance=review)
-        return render(
-            request,
-            'home/review_edit.html',
-            {'form': form, 'review': review}
-        )
-    else:
-        messages.add_message(request, messages.ERROR, 'You are not authorized to edit this review!')
-        return HttpResponseRedirect(reverse('movie_detail', args=[review.movie.tmdb_id]))
+def review_edit(request, tmdb_id, review_id):
+    """
+    View to edit reviews
+    """
+    if request.method == "POST":
+        queryset = MovieList.objects.all()
+        movie = get_object_or_404(queryset, tmdb_id=tmdb_id)
+        review = get_object_or_404(MovieReview, pk=review_id)
+        review_form = ReviewForm(data=request.POST, instance=review, user=request.user, movie=movie)
+
+        if review_form.is_valid() and review.user == request.user:
+            review = review_form.save(commit=False)
+            review.movie = movie
+            review.approved = False
+            review.save()
+            messages.add_message(request, messages.SUCCESS, 'Review Updated!')
+        else:
+            messages.add_message(request, messages.ERROR, 'Error updating review!')
+
+    return HttpResponseRedirect(reverse('movie_detail', args=[tmdb_id]))

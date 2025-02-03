@@ -304,6 +304,16 @@ h1 {
     opacity: 0.9;
 }
 
+.btn-edit {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
 .draft-btn {
     width: 100%;
     padding: 10px;
