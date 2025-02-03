@@ -15,7 +15,7 @@
                             <p><u>Released</u><br> {{ movie.release_date|date:"d/m/Y" }}</p>
                         </div>
                         <div class="col-3">
-                            <p><u>Runtime</u><br> {{ movie.runtime }} minutes</p>
+                            <p><u>Runtime</u><br> {{ movie.runtime|default:"N/A" }} minutes</p>
                         </div>
                         <div class="col-3">
                             <p><u>Genres</u><br>
@@ -67,14 +67,14 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="draftModalLabel">Save Draft</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 {% if user.is_authenticated %}
                 <h3>Leave a review:</h3>
                 <p>All reviews need to be approved by an admin.</p>
                 <p>Posting as: <strong>{{ user.username }}</strong></p>
-                <form id="reviewForm" method="post" style="margin-top: 1.3em;">
+                <form id="reviewForm" method="post" class="review-form" style="margin-top: 1.3em;">
                     {{ form }}
                     {% csrf_token %}
                     <button type="submit" class="btn btn-primary mb-3">Save Draft</button>

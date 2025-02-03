@@ -59,13 +59,6 @@ body {
     color: pink;
 }
 
-.alert-close {
-    float: right;
-    background-color: transparent;
-    border: none;
-    color: var(--primary-color);
-}
-
 .logo {
     font-family: var(--logo-font);
     font-size: 1.2rem;
@@ -291,6 +284,24 @@ h1 {
     border: 1px solid var(--shadow-color);
     border-radius: 5px;
     box-shadow: inset 0px 0px 5px var(--shadow-color);
+    background-color: var(--container-color);
+    color: var(--font-color);
+}
+
+.review-form .btn {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    text-transform: uppercase;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+.review-form .btn:hover {
+    opacity: 0.9;
 }
 
 .draft-btn {
@@ -360,8 +371,21 @@ h1 {
 }
 
 .btn-close {
-    background-color: var(--secondary-color);
     color: var(--primary-color);
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.btn-close svg {
+    fill: red !important;
+}
+
+.btn-close:hover {
+    opacity: 0.9;
 }
 
 .modal-footer {

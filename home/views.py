@@ -56,8 +56,10 @@ def movie_detail(request, tmdb_id):
             messages.add_message(request, messages.SUCCESS, 'Review submitted successfully!')
             return HttpResponseRedirect(reverse('movie_detail', args=[movie.tmdb_id]))
         else:
-            for error in form.errors.values():
-                messages.add_message(request, messages.ERROR, error)
+            # Add each error as a separate message
+            for errors in form.errors.values():
+                for error in errors:
+                    messages.add_message(request, messages.ERROR, error)
     else:
         form = ReviewForm(user=request.user, movie=movie)
 

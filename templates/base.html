@@ -75,21 +75,25 @@
             </div>
         </nav>
         <!-- displaying Django messages -->
+        {% if messages %}
         <div class="container">
             <div class="row">
                 <div class="col-md-8 offset-md-2">
                     {% for message in messages %}
-                    <div class="alert alert-{{ message.tags }} alert-dismissible
-                fade show" id="msg" role="alert">
-                        <p>{{ message | safe }}</p>
-                        <button type="button" class="alert-close" data-bs-dismiss="alert" aria-label="Close">
-                            <i class="fa-solid fa-x"></i>
-                        </button>
+                    <!-- Custom validation alert with close button -->
+                    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                        {% if message.tags == "error" %}
+                            <strong>Error:</strong> {{ message }}
+                        {% else %}
+                            {{ message }}
+                        {% endif %}
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                     {% endfor %}
                 </div>
             </div>
         </div>
+        {% endif %}
 
         {% block content %}
         {% endblock content %}
