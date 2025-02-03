@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404
 from django.contrib import messages
 from .models import MovieList, SeriesList, MovieGenre, MovieReview
 from .forms import ReviewForm
@@ -52,6 +52,8 @@ def movie_detail(request, tmdb_id):
             review.user = request.user
             review.movie = movie
             review.save()
+            messages.add_message(request, messages.SUCCESS, 'Review submitted successfully!')
+
 
     form = ReviewForm()
 
