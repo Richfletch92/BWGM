@@ -40,7 +40,13 @@
                                     <p><strong>{{ review.user }}</strong> rated it {{ review.rating }}/10</p>
                                     <p>{{ review.content }}</p>
                                     <p><small>Reviewed on {{ review.date_created|date:"h:iA dS M y" }}</small></p>
+                                    {% if not review.approved and review.user == user %}
+                                    <p class="approval">
+                                        This review is awaiting approval
+                                    </p>
+                                {% endif %}
                                 </div>
+                                
                                 {% empty %}
                                 <p>No reviews yet.</p>
                                 {% endfor %}

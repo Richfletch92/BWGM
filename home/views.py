@@ -1,7 +1,8 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.contrib import messages
-from .models import MovieList, SeriesList, MovieGenre, MovieReview
+from django.http import HttpResponseRedirect
 from .forms import ReviewForm
+from .models import MovieList, SeriesList, MovieGenre, MovieReview
 
 
 def home(request):
@@ -46,16 +47,19 @@ def movie_detail(request, tmdb_id):
         reviews = MovieReview.objects.filter(movie=movie, approved=True).order_by('-date_created')
 
     if request.method == "POST":
-        form = ReviewForm(data=request.POST)
+        form = ReviewForm(request.POST, user=request.user, movie=movie)
         if form.is_valid():
             review = form.save(commit=False)
             review.user = request.user
             review.movie = movie
             review.save()
             messages.add_message(request, messages.SUCCESS, 'Review submitted successfully!')
-
-
-    form = ReviewForm()
+            return HttpResponseRedirect(reverse('movie_detail', args=[movie.tmdb_id]))
+        else:
+            for error in form.errors.values():
+                messages.add_message(request, messages.ERROR, error)
+    else:
+        form = ReviewForm(user=request.user, movie=movie)
 
     return render(
         request,
@@ -70,3 +74,26 @@ def movie_detail(request, tmdb_id):
             'user': request.user
         }
     )
+
+
+def review_edit(request, review_id):
+    review = get_object_or_404(MovieReview, id=review_id)
+    if request.user == review.user:
+        if request.method == "POST":
+            form = ReviewForm(data=request.POST, instance=review)
+            if form.is_valid():
+                form.save()
+                messages.add_message(request, messages.SUCCESS, 'Review updated successfully!')
+                return HttpResponseRedirect(reverse('movie_detail', args=[review.movie.tmdb_id]))
+            else:
+                for error in form.errors.values():
+                    messages.add_message(request, messages.ERROR, error)
+        form = ReviewForm(instance=review)
+        return render(
+            request,
+            'home/review_edit.html',
+            {'form': form, 'review': review}
+        )
+    else:
+        messages.add_message(request, messages.ERROR, 'You are not authorized to edit this review!')
+        return HttpResponseRedirect(reverse('movie_detail', args=[review.movie.tmdb_id]))

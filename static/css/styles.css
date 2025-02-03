@@ -49,9 +49,17 @@ body {
     font-size: 1rem;
     color: var(--font-color);
     background-color: var(--container-color);
+
 }
 
-.close {
+.alert p {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    color: pink;
+}
+
+.alert-close {
     float: right;
     background-color: transparent;
     border: none;
