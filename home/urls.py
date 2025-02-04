@@ -10,4 +10,8 @@ urlpatterns = [
         'movie/<int:tmdb_id>/edit_review/<int:review_id>/',
         views.review_edit, name='edit_review'
     ),
+    path(
+        'movie/<int:tmdb_id>/delete_review/<int:review_id>/',
+        views.review_delete, name='delete_review'
+    ),
 ]

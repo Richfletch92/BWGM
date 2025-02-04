@@ -4,6 +4,9 @@ document.addEventListener("DOMContentLoaded", function() {
     const ratingSelect = document.getElementById("id_rating");
     const reviewForm = document.getElementById("reviewForm");
     const submitButton = document.getElementById("submitButton");
+    const deleteButtons = document.getElementsByClassName("btn-delete");
+    const deleteModal = new bootstrap.Modal(document.getElementById("deleteModal"));
+    const deleteConfirm = document.getElementById("deleteButton");
 
     /**
     * Initializes edit functionality for the provided edit buttons.
@@ -25,6 +28,18 @@ document.addEventListener("DOMContentLoaded", function() {
             ratingSelect.value = reviewRating.trim();
             submitButton.innerText = "Update";
             reviewForm.setAttribute("action", `edit_review/${reviewId}/`);
+        });
+    }
+
+    /**
+     * Creates modal for delete confirmation.
+     */
+
+    for (let button of deleteButtons) {
+        button.addEventListener("click", (e) => {
+            let reviewId = e.target.getAttribute("data-review_id");
+            deleteConfirm.href = `delete_review/${reviewId}`;
+            deleteModal.show();
         });
     }
 });

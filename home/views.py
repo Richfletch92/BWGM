@@ -115,3 +115,22 @@ def review_edit(request, tmdb_id, review_id):
             )
 
     return HttpResponseRedirect(reverse('movie_detail', args=[tmdb_id]))
+
+
+def review_delete(request, tmdb_id, review_id):
+    """
+    View to delete reviews
+    """
+    queryset = MovieList.objects.all()
+    movie = get_object_or_404(queryset, tmdb_id=tmdb_id)
+    review = get_object_or_404(MovieReview, pk=review_id)
+    
+    if review.user == request.user:
+        review.delete()
+        messages.add_message(request, messages.SUCCESS, 'Review Deleted!')
+    else:
+        messages.add_message(
+            request, messages.ERROR, 'Error deleting review!'
+        )
+
+    return HttpResponseRedirect(reverse('movie_detail', args=[tmdb_id]))
