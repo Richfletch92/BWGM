@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import MovieList, SeriesList, MovieReview
+from .models import MovieList, SeriesList, MovieReview, SeriesReview
 from django_summernote.admin import SummernoteModelAdmin
 
 
@@ -54,4 +54,17 @@ class SeriesListAdmin(SummernoteModelAdmin):
     get_average_rating.short_description = 'Average Rating'
 
 
-admin.site.register(MovieReview)
+@admin.register(MovieReview)
+class MovieReviewAdmin(admin.ModelAdmin):
+    list_display = ('movie', 'user', 'rating', 'date_created', 'approved')
+    search_fields = ('user__username', 'movie__title')
+    list_filter = ('approved', 'date_created')
+    ordering = ('-date_created',)
+
+
+@admin.register(SeriesReview)
+class SeriesReviewAdmin(admin.ModelAdmin):
+    list_display = ('series', 'user', 'rating', 'date_created', 'approved')
+    search_fields = ('user__username', 'series__title')
+    list_filter = ('approved', 'date_created')
+    ordering = ('-date_created',)

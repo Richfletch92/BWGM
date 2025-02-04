@@ -31,7 +31,7 @@ class SeriesList(models.Model):
     first_air_date = models.DateField()
     last_air_date = models.DateField(null=True, blank=True)
     number_of_seasons = models.IntegerField(null=True, blank=True)
-    
+   
     def average_rating(self):
         avg_rating = self.seriesreview_set.filter(approved=True).aggregate(
             Avg('rating')
@@ -81,6 +81,9 @@ class SeriesReview(models.Model):
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
     approved = models.BooleanField(default=False)
+
+    class Meta:
+        ordering = ['date_created']
 
     def __str__(self):
         return f"Review by {self.user.username} on {self.series.title}"
