@@ -9,7 +9,7 @@ def get_movie_and_reviews(tmdb_id):
     movie = get_object_or_404(MovieList, tmdb_id=tmdb_id)
     genres = MovieGenre.objects.filter(movie=movie).select_related('genre')
     reviews = MovieReview.objects.filter(movie=movie).order_by('-date_created')
-    review_count = reviews.count()
+    review_count = reviews.filter(approved=True).count()
     average_rating = movie.average_rating()
     return movie, genres, reviews, review_count, average_rating
 
@@ -17,7 +17,7 @@ def get_movie_and_reviews(tmdb_id):
 def get_series_and_reviews(tmdb_id):
     series = get_object_or_404(SeriesList, tmdb_id=tmdb_id)
     reviews = SeriesReview.objects.filter(series=series).order_by('-date_created')
-    review_count = reviews.count()
+    review_count = reviews.filter(approved=True).count()
     average_rating = series.average_rating()
     return series, reviews, review_count, average_rating
 

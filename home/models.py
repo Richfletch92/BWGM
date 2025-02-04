@@ -12,7 +12,7 @@ class MovieList(models.Model):
     runtime = models.IntegerField(null=True, blank=True)
 
     def average_rating(self):
-        avg_rating = self.moviereview_set.aggregate(
+        avg_rating = self.moviereview_set.filter(approved=True).aggregate(
             Avg('rating')
         )['rating__avg']
         if avg_rating is not None:
@@ -33,7 +33,7 @@ class SeriesList(models.Model):
     number_of_seasons = models.IntegerField(null=True, blank=True)
     
     def average_rating(self):
-        avg_rating = self.seriesreview_set.aggregate(
+        avg_rating = self.seriesreview_set.filter(approved=True).aggregate(
             Avg('rating')
         )['rating__avg']
         if avg_rating is not None:
