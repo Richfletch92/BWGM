@@ -8,7 +8,9 @@ from home.utils import (
     fetch_season_details,
     fetch_genres
 )
-from home.models import MovieList, SeriesList, Season, Genre, MovieGenre, SeriesGenre
+from home.models import (
+    MovieList, SeriesList, Season, Genre, MovieGenre, SeriesGenre
+)
 
 
 class Command(BaseCommand):
@@ -104,21 +106,37 @@ class Command(BaseCommand):
                                 genre=genre_obj
                             )
                         # Fetch and store season details
-                        for season_number in range(1, series.number_of_seasons + 1):
-                            season_details = fetch_season_details(tmdb_id, season_number)
+                        for season_number in range(
+                            1, series.number_of_seasons + 1
+                        ):
+                            season_details = fetch_season_details(
+                                tmdb_id, season_number
+                            )
                             if season_details:
-                                first_air_date = season_details.get('air_date', None)
-                                if not first_air_date and season_details['episodes']:
-                                    first_air_date = season_details['episodes'][0].get('air_date', None)
+                                first_air_date = season_details.get(
+                                    'air_date', None
+                                )
+                                if not first_air_date and season_details[
+                                    'episodes'
+                                ]:
+                                    first_air_date = season_details[
+                                        'episodes'
+                                    ][0].get('air_date', None)
                                 if first_air_date:
                                     Season.objects.update_or_create(
                                         series=series,
                                         season_number=season_number,
                                         defaults={
-                                            'episode_count': len(season_details['episodes']),
-                                            'description': season_details['overview'],
+                                            'episode_count': len(
+                                                season_details['episodes']
+                                            ),
+                                            'description': season_details[
+                                                'overview'
+                                            ],
                                             'first_air_date': first_air_date,
-                                            'last_air_date': season_details.get('air_date', None),
+                                            'last_air_date': season_details.get(
+                                                'air_date', None
+                                            ),
                                         }
                                     )
         self.stdout.write(

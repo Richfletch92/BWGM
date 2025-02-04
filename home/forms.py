@@ -19,8 +19,21 @@ class ReviewForm(forms.ModelForm):
 
     def clean_content(self):
         content = self.cleaned_data.get('content')
-
-        if MovieReview.objects.filter(user=self.user, movie=self.movie, content=content).exists():
-            raise ValidationError("You have already submitted a review with the same content.")
-
+        if self.instance.pk:
+            # Exclude the current review from the validation check
+            if MovieReview.objects.filter(
+                user=self.user, movie=self.movie, content=content
+            ).exclude(pk=self.instance.pk).exists():
+                raise ValidationError(
+                    "You have already submitted a review with the same "
+                    "content."
+                )
+        else:
+            if MovieReview.objects.filter(
+                user=self.user, movie=self.movie, content=content
+            ).exists():
+                raise ValidationError(
+                    "You have already submitted a review with the same "
+                    "content."
+                )
         return content

@@ -10,9 +10,11 @@ class MovieList(models.Model):
     poster_path = models.URLField()
     release_date = models.DateField()
     runtime = models.IntegerField(null=True, blank=True)
-    
+
     def average_rating(self):
-        avg_rating = self.moviereview_set.aggregate(Avg('rating'))['rating__avg']
+        avg_rating = self.moviereview_set.aggregate(
+            Avg('rating')
+        )['rating__avg']
         if avg_rating is not None:
             return round(avg_rating, 1)
         return None

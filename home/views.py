@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404, reverse, redirect
+from django.shortcuts import render, get_object_or_404, reverse
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from .forms import ReviewForm
@@ -37,14 +37,20 @@ def movie_detail(request, tmdb_id):
     queryset = MovieList.objects.all()
     movie = get_object_or_404(queryset, tmdb_id=tmdb_id)
     genres = MovieGenre.objects.filter(movie=movie).select_related('genre')
-    reviews = MovieReview.objects.filter(movie=movie, approved=True).order_by('-date_created')
+    reviews = MovieReview.objects.filter(
+        movie=movie, approved=True
+    ).order_by('-date_created')
     review_count = reviews.count()
     average_rating = movie.average_rating()
 
     if request.user.is_authenticated:
-        reviews = MovieReview.objects.filter(movie=movie).order_by('-date_created')
+        reviews = MovieReview.objects.filter(
+            movie=movie
+        ).order_by('-date_created')
     else:
-        reviews = MovieReview.objects.filter(movie=movie, approved=True).order_by('-date_created')
+        reviews = MovieReview.objects.filter(
+            movie=movie, approved=True
+        ).order_by('-date_created')
 
     if request.method == "POST":
         form = ReviewForm(request.POST, user=request.user, movie=movie)
@@ -53,8 +59,12 @@ def movie_detail(request, tmdb_id):
             review.user = request.user
             review.movie = movie
             review.save()
-            messages.add_message(request, messages.SUCCESS, 'Review submitted successfully!')
-            return HttpResponseRedirect(reverse('movie_detail', args=[movie.tmdb_id]))
+            messages.add_message(
+                request, messages.SUCCESS, 'Review submitted successfully!'
+            )
+            return HttpResponseRedirect(
+                reverse('movie_detail', args=[movie.tmdb_id])
+            )
         else:
             # Add each error as a separate message
             for errors in form.errors.values():
@@ -86,7 +96,12 @@ def review_edit(request, tmdb_id, review_id):
         queryset = MovieList.objects.all()
         movie = get_object_or_404(queryset, tmdb_id=tmdb_id)
         review = get_object_or_404(MovieReview, pk=review_id)
-        review_form = ReviewForm(data=request.POST, instance=review, user=request.user, movie=movie)
+        review_form = ReviewForm(
+            data=request.POST,
+            instance=review,
+            user=request.user,
+            movie=movie
+        )
 
         if review_form.is_valid() and review.user == request.user:
             review = review_form.save(commit=False)
@@ -95,6 +110,8 @@ def review_edit(request, tmdb_id, review_id):
             review.save()
             messages.add_message(request, messages.SUCCESS, 'Review Updated!')
         else:
-            messages.add_message(request, messages.ERROR, 'Error updating review!')
+            messages.add_message(
+                request, messages.ERROR, 'Error updating review!'
+            )
 
     return HttpResponseRedirect(reverse('movie_detail', args=[tmdb_id]))
