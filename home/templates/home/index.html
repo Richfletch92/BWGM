@@ -22,7 +22,9 @@
         <div class="scroll-container">
             {% for series in series %}
             <div class="">
+                <a href="{% url 'series_detail' series.tmdb_id %}">
                     <img src="{{ series.poster_path }}" alt="{{ series.title }} poster" />
+                </a>
             </div>
             {% endfor %}
         </div>

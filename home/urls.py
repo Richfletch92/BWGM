@@ -8,10 +8,21 @@ urlpatterns = [
     path('movie/<int:tmdb_id>/', views.movie_detail, name='movie_detail'),
     path(
         'movie/<int:tmdb_id>/edit_review/<int:review_id>/',
-        views.review_edit, name='edit_review'
+        views.movie_review_edit, name='edit_review'
     ),
     path(
         'movie/<int:tmdb_id>/delete_review/<int:review_id>/',
-        views.review_delete, name='delete_review'
+        views.movie_review_delete, name='delete_review'
+    ),
+    path(
+        'series/<int:tmdb_id>/', views.series_detail, name='series_detail'
+    ),
+    path(
+        'series/<int:tmdb_id>/edit_review/<int:review_id>/',
+        views.series_review_edit, name='edit_series_review'
+    ),
+    path(
+        'series/<int:tmdb_id>/delete_review/<int:review_id>/',
+        views.series_review_delete, name='delete_series_review'
     ),
 ]

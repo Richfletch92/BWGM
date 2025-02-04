@@ -31,7 +31,14 @@ class SeriesList(models.Model):
     first_air_date = models.DateField()
     last_air_date = models.DateField(null=True, blank=True)
     number_of_seasons = models.IntegerField(null=True, blank=True)
-    average_rating = models.FloatField(null=True, blank=True)
+    
+    def average_rating(self):
+        avg_rating = self.seriesreview_set.aggregate(
+            Avg('rating')
+        )['rating__avg']
+        if avg_rating is not None:
+            return round(avg_rating, 1)
+        return None
 
     def __str__(self):
         return self.title
