@@ -42,4 +42,17 @@ document.addEventListener("DOMContentLoaded", function() {
             deleteModal.show();
         });
     }
+    
+    /**
+     * Updates the year in the footer to the current year.
+     */
+    const yearElement = document.getElementById("year");
+    if (yearElement) {
+        const currentYear = new Date().getFullYear();
+        yearElement.textContent = currentYear;
+        console.log(`Year updated to: ${currentYear}`);
+    } else {
+        console.error("Element with ID 'year' not found.");
+    }
+    
 });

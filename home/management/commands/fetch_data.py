@@ -9,7 +9,7 @@ from home.utils import (
     fetch_genres
 )
 from home.models import (
-    MovieList, SeriesList, Season, Genre, MovieGenre, SeriesGenre
+    MovieList, SeriesList, SeasonList, Genre, MovieGenre, SeriesGenre
 )
 
 
@@ -123,7 +123,7 @@ class Command(BaseCommand):
                                         'episodes'
                                     ][0].get('air_date', None)
                                 if first_air_date:
-                                    Season.objects.update_or_create(
+                                    SeasonList.objects.update_or_create(
                                         series=series,
                                         season_number=season_number,
                                         defaults={
@@ -137,8 +137,12 @@ class Command(BaseCommand):
                                             'last_air_date': season_details.get(
                                                 'air_date', None
                                             ),
+                                            'poster_path': (
+                                                f"https://image.tmdb.org/t/p/w500"
+                                                f"{season_details['poster_path']}"
+                                            ),
                                         }
                                     )
         self.stdout.write(
-            self.style.SUCCESS('TV series fetched and stored successfully!')
+            self.style.SUCCESS('TV series and seasons fetched and stored successfully!')
         )

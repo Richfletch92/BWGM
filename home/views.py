@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, reverse
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from .forms import MovieReviewForm, SeriesReviewForm
-from .models import MovieList, SeriesList, MovieGenre, MovieReview, SeriesReview
+from .models import MovieList, MovieGenre, MovieReview, SeriesList, SeriesGenre, SeriesReview, SeasonList
 
 
 def get_movie_and_reviews(tmdb_id):
@@ -16,10 +16,11 @@ def get_movie_and_reviews(tmdb_id):
 
 def get_series_and_reviews(tmdb_id):
     series = get_object_or_404(SeriesList, tmdb_id=tmdb_id)
+    genres = SeriesGenre.objects.filter(series=series).select_related('genre')
     reviews = SeriesReview.objects.filter(series=series).order_by('-date_created')
     review_count = reviews.filter(approved=True).count()
     average_rating = series.average_rating()
-    return series, reviews, review_count, average_rating
+    return series, genres, reviews, review_count, average_rating
 
 
 def handle_review_form(request, form, review, success_message, error_message, redirect_url):
@@ -35,7 +36,7 @@ def handle_review_form(request, form, review, success_message, error_message, re
 
 def home(request):
     movies = MovieList.objects.all()[:25]
-    series = SeriesList.objects.all()[:25]
+    series = SeriesList.objects.all().order_by('-first_air_date')[:25]
     return render(
         request,
         'home/index.html',
@@ -53,7 +54,7 @@ def movies(request):
 
 
 def series(request):
-    series = SeriesList.objects.all()
+    series = SeriesList.objects.all().order_by('-first_air_date')
     return render(
         request,
         'home/series.html',
@@ -122,7 +123,8 @@ def movie_review_delete(request, tmdb_id, review_id):
 
 
 def series_detail(request, tmdb_id):
-    series, reviews, review_count, average_rating = get_series_and_reviews(tmdb_id)
+    series, genres, reviews, review_count, average_rating = get_series_and_reviews(tmdb_id)
+    seasons = SeasonList.objects.filter(series=series)  # Fetch seasons for the series
     if request.user.is_authenticated:
         reviews = SeriesReview.objects.filter(series=series).order_by('-date_created')
     else:
@@ -149,11 +151,13 @@ def series_detail(request, tmdb_id):
         'home/series_detail.html',
         {
             'series': series,
+            'genres': genres,
             'reviews': reviews,
             'review_count': review_count,
             'average_rating': average_rating,
             'form': form,
-            'user': request.user
+            'user': request.user,
+            'seasons': seasons  # Pass seasons to the template
         }
     )
 

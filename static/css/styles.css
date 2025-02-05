@@ -35,7 +35,7 @@ body {
     margin: 20px;
     border-radius: 5px;
     background-color: #0a0a0a;
-    box-shadow: 0px 0px 10px 1px #505050;
+    box-shadow: 0px 0px 10px 1px var(--shadow-color);
 }
 
 /* Alert Message Styling */
@@ -102,7 +102,7 @@ h1 {
 }
 
 .scroll-container img:hover {
-    box-shadow: 0px 0px 10px 5px #505050;
+    box-shadow: 0px 0px 10px 5px var(--shadow-color);
 }
 
 .poster {
@@ -118,7 +118,7 @@ h1 {
 }
 
 .poster img:hover {
-    box-shadow: 0px 0px 10px 5px #505050;
+    box-shadow: 0px 0px 10px 5px var(--shadow-color);
 }
 
 /* Custom scrollbar styling */
@@ -378,6 +378,54 @@ h1 {
     background: #555;
 }
 
+.scroll-container-seasons {
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.scroll-container-seasons .season-poster {
+    text-align: center;
+    margin-right: 15px; /* Add margin to separate each season poster */
+}
+
+.scroll-container-seasons img {
+    border-radius: 10px;
+    width: 150px;
+    height: auto;
+    transition: box-shadow 0.5s ease-in-out;
+}
+
+.scroll-container-seasons img:hover {
+    box-shadow: 0px 0px 10px 5px var(--shadow-color);
+}
+
+.scroll-container-seasons p {
+    margin-top: 5px;
+    font-size: 1rem;
+    color: var(--font-color);
+}
+
+/* Custom scrollbar styling */
+.scroll-container-seasons::-webkit-scrollbar {
+    height: 12px; /* Height of the horizontal scrollbar */
+}
+
+.scroll-container-seasons::-webkit-scrollbar-track {
+    background: transparent; /* Background of the scrollbar track */
+}
+
+.scroll-container-seasons::-webkit-scrollbar-thumb {
+    background: #888; /* Color of the scrollbar thumb */
+    border-radius: 6px; /* Rounded corners for the scrollbar thumb */
+}
+
+.scroll-container-seasons::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Color of the scrollbar thumb on hover */
+}
+
 .modal-content {
     background-color: var(--container-color);
     color: var(--font-color);
@@ -430,6 +478,22 @@ footer {
     bottom: 0;
     width: 100%;
     margin-top: 50px;
+    font-size: 0.8rem;
+}
+
+.social-icons a {
+    margin-left: 10px; /* Adjust the spacing as needed */
+    color: white; /* Ensure the icons are white */
+    text-decoration: none; /* Remove underline */
+}
+
+.social-icons a i {
+    font-size: 1.5rem; /* Adjust the size as needed */
+    transition: color 0.3s ease; /* Add a transition effect */
+}
+
+.social-icons a:hover i {
+    color: var(--primary-color); /* Change color on hover */
 }
 
 /* Media Queries for responsive design */
@@ -453,4 +517,3 @@ footer {
         height: 250px;
     }
 }
- 

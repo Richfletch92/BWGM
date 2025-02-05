@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.db.models import Avg
+from django.templatetags.static import static
 
 
 class MovieList(models.Model):
@@ -10,6 +11,12 @@ class MovieList(models.Model):
     poster_path = models.URLField()
     release_date = models.DateField()
     runtime = models.IntegerField(null=True, blank=True)
+
+    def save(self, *args, **kwargs):
+        if self.poster_path == 'https://image.tmdb.org/t/p/w500None':
+            # Set your default poster path here
+            self.poster_path = static('images/default_poster.jpeg')
+        super().save(*args, **kwargs)
 
     def average_rating(self):
         avg_rating = self.moviereview_set.filter(approved=True).aggregate(
@@ -31,7 +38,13 @@ class SeriesList(models.Model):
     first_air_date = models.DateField()
     last_air_date = models.DateField(null=True, blank=True)
     number_of_seasons = models.IntegerField(null=True, blank=True)
-   
+
+    def save(self, *args, **kwargs):
+        if self.poster_path == 'https://image.tmdb.org/t/p/w500None':
+            # Set your default poster path here
+            self.poster_path = static('images/default_poster.jpeg')
+        super().save(*args, **kwargs)
+
     def average_rating(self):
         avg_rating = self.seriesreview_set.filter(approved=True).aggregate(
             Avg('rating')
@@ -44,7 +57,7 @@ class SeriesList(models.Model):
         return self.title
 
 
-class Season(models.Model):
+class SeasonList(models.Model):
     series = models.ForeignKey(SeriesList, on_delete=models.CASCADE)
     season_number = models.IntegerField()
     episode_count = models.IntegerField()
@@ -52,6 +65,12 @@ class Season(models.Model):
     first_air_date = models.DateField()
     last_air_date = models.DateField(null=True, blank=True)
     average_rating = models.FloatField(null=True, blank=True)
+    poster_path = models.URLField(null=True, blank=True)
+
+    def save(self, *args, **kwargs):
+        if self.poster_path == 'https://image.tmdb.org/t/p/w500None':
+            self.poster_path = self.series.poster_path
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return f"{self.series.title} | Season {self.season_number}"
@@ -91,7 +110,7 @@ class SeriesReview(models.Model):
 
 class SeasonReview(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    season = models.ForeignKey(Season, on_delete=models.CASCADE)
+    season = models.ForeignKey(SeasonList, on_delete=models.CASCADE)
     rating = models.IntegerField()
     content = models.TextField()
     date_created = models.DateTimeField(auto_now_add=True)
