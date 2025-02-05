@@ -27,4 +27,6 @@ urlpatterns = [
         'series/<int:tmdb_id>/delete_review/<int:review_id>/',
         views.series_review_delete, name='delete_series_review'
     ),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    path('search/', views.search_results, name='search_results'),
+    
+]

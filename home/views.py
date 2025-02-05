@@ -3,6 +3,7 @@ from django.contrib import messages
 from django.http import HttpResponseRedirect
 from .forms import MovieReviewForm, SeriesReviewForm
 from .models import MovieList, MovieGenre, MovieReview, SeriesList, SeriesGenre, SeriesReview, SeasonList
+from django.db.models import Q
 
 
 def get_movie_and_reviews(tmdb_id):
@@ -182,3 +183,14 @@ def series_review_delete(request, tmdb_id, review_id):
     else:
         messages.add_message(request, messages.ERROR, 'Error deleting review!')
     return HttpResponseRedirect(reverse('series_detail', args=[tmdb_id]))
+
+
+def search_results(request):
+    query = request.GET.get('q')
+    movies = MovieList.objects.filter(title__icontains=query)
+    series = SeriesList.objects.filter(title__icontains=query)
+    return render(
+        request,
+        'home/search_results.html',
+        {'query': query, 'movies': movies, 'series': series}
+    )
