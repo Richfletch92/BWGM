@@ -1,7 +1,5 @@
 from django.urls import path
 from . import views
-from django.conf import settings
-from django.conf.urls.static import static
 
 urlpatterns = [
     path('', views.home, name='home'),
@@ -28,5 +26,4 @@ urlpatterns = [
         views.series_review_delete, name='delete_series_review'
     ),
     path('search/', views.search_results, name='search_results'),
-    
 ]

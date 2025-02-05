@@ -1,9 +1,8 @@
 from django.shortcuts import render, get_object_or_404, reverse
 from django.contrib import messages
-from django.http import HttpResponseRedirect
-from .forms import MovieReviewForm, SeriesReviewForm
+from django.http import HttpResponseRedirect, JsonResponse
+from .forms import MovieReviewForm, SeriesReviewForm, MovieFilterForm
 from .models import MovieList, MovieGenre, MovieReview, SeriesList, SeriesGenre, SeriesReview, SeasonList
-from django.db.models import Q
 
 
 def get_movie_and_reviews(tmdb_id):
@@ -47,10 +46,31 @@ def home(request):
 
 def movies(request):
     movies = MovieList.objects.all()
+
+    # Handle filters if present
+    if request.method == "GET":
+        form = MovieFilterForm(request.GET)
+
+        if form.is_valid():
+            genre = form.cleaned_data.get('genre')
+            min_rating = form.cleaned_data.get('min_rating')
+            release_year = form.cleaned_data.get('release_year')
+
+            if genre:
+                movies = movies.filter(moviegenre__genre=genre)
+
+            if min_rating:
+                movies = movies.filter(moviereview__rating__gte=min_rating)
+
+            if release_year:
+                movies = movies.filter(release_date__year=release_year)
+    else:
+        form = MovieFilterForm()
+
     return render(
         request,
         'home/movies.html',
-        {'movies': movies}
+        {'movies': movies, 'form': form}
     )
 
 

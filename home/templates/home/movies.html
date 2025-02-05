@@ -1,10 +1,42 @@
 {% extends "base.html" %}
 {% load static %}
-{% block content %}
 
+{% block content %}
 <div class="container">
     <h1>Movies</h1>
-    <div class="row">
+
+    <!-- Toggle Filter Button -->
+    <div class="d-flex justify-content-end">
+        <button id="toggleFilterButton" class="btn btn-secondary mb-3">Show Filters</button>
+    </div>
+
+    <!-- Filter Form -->
+    <div id="filterFormContainer" style="display: none;">
+        <form id="filterForm" method="GET" action="{% url 'movies' %}">
+            <div class="row">
+                <div class="col-md-4">
+                    <label for="genre">Genre</label>
+                    <select name="genre" class="form-control">
+                        <option value="">-- All Genres --</option>
+                        {% for genre in form.genre.field.queryset %}
+                            <option value="{{ genre.id }}" {% if form.genre.value == genre.id %}selected{% endif %}>{{ genre.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label for="min_rating">Minimum Rating</label>
+                    <input type="number" name="min_rating" min="1" max="10" class="form-control" value="{{ form.min_rating.value }}">
+                </div>
+                <div class="col-md-4">
+                    <label for="release_year">Release Year</label>
+                    <input type="number" name="release_year" min="1900" max="2100" class="form-control" value="{{ form.release_year.value }}">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary mt-3">Filter</button>
+        </form>
+    </div>
+
+    <div class="row mt-4" id="moviesContainer">
         {% for movie in movies %}
         <div class="col-6 col-sm-3 col-lg-2 mb-4">
             <div class="poster">
@@ -16,5 +48,8 @@
         {% endfor %}
     </div>
 </div>
-
 {% endblock content %}
+
+{% block extras %}
+<script src="{% static 'js/filters.js' %}"></script>
+{% endblock %}

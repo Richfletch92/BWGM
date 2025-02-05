@@ -1,4 +1,4 @@
-from .models import MovieReview, SeriesReview
+from .models import MovieReview, SeriesReview, Genre
 from django import forms
 from django.core.exceptions import ValidationError
 
@@ -73,3 +73,9 @@ class SeriesReviewForm(forms.ModelForm):
                     "content."
                 )
         return content
+    
+
+class MovieFilterForm(forms.Form):
+    genre = forms.ModelChoiceField(queryset=Genre.objects.all(), required=False)
+    min_rating = forms.IntegerField(min_value=1, max_value=10, required=False)
+    release_year = forms.IntegerField(min_value=1900, max_value=2100, required=False)
