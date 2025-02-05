@@ -30,12 +30,45 @@ body {
     flex: 1;
 }
 
+/* Navbar Styling */
 .navbar {
     border: 2px solid #000000;
     margin: 20px;
     border-radius: 5px;
     background-color: #0a0a0a;
     box-shadow: 0px 0px 10px 1px var(--shadow-color);
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+    max-width: 400px;
+}
+
+.search-form input[type="search"] {
+    flex: 1;
+    border: 1px solid var(--shadow-color);
+    border-radius: 5px;
+    background-color: var(--container-color);
+    color: var(--font-color);
+    font-family: var(--primary-font);
+}
+
+.search-form button[type="submit"] {
+    padding: 7px 20px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.search-form button[type="submit"]:hover {
+    opacity: 0.9;
 }
 
 /* Alert Message Styling */

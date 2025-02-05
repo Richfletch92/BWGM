@@ -37,7 +37,8 @@
                             <div class="scroll-container-seasons">
                                 {% for season in seasons %}
                                 <div class="season-poster">
-                                    <img src="{{ season.poster_path }}" alt="Season {{ season.season_number }} poster" />
+                                    <img src="{{ season.poster_path }}"
+                                        alt="Season {{ season.season_number }} poster" />
                                     <p>Season {{ season.season_number }}</p>
                                 </div>
                                 {% endfor %}
@@ -139,5 +140,10 @@
             </div>
         </div>
     </div>
+</div>
 
-    {% endblock content %}
+{% endblock content %}
+
+{% block extras %}
+<script src="{% static 'js/reviews.js' %}"></script>
+{% endblock %}
