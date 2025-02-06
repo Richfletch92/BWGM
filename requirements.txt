@@ -5,6 +5,7 @@ cffi==1.17.1
 charset-normalizer==3.4.1
 cryptography==44.0.0
 defusedxml==0.7.1
+dj-database-url==2.3.0
 Django==4.2.18
 django-allauth==0.57.2
 django-livereload-server==0.5.1
@@ -12,6 +13,7 @@ django-summernote==0.8.20.0
 gunicorn==20.1.0
 idna==3.10
 oauthlib==3.2.2
+psycopg2==2.9.10
 pycparser==2.22
 PyJWT==2.10.1
 python-dotenv==1.0.1
@@ -21,6 +23,7 @@ requests-oauthlib==2.0.0
 setuptools==75.8.0
 sqlparse==0.5.3
 tornado==6.4.2
+typing_extensions==4.12.2
 tzdata==2025.1
 urllib3==2.3.0
 webencodings==0.5.1
