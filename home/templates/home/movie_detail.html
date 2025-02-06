@@ -11,23 +11,24 @@
                 <div class="text-center">
                     <h1>{{ movie.title }}</h1>
                     <div class="row details-font">
-                        <div class="col-3">
+                        <div class="col-4">
                             <p><u>Released</u><br> {{ movie.release_date|date:"d/m/Y" }}</p>
                         </div>
-                        <div class="col-3">
+                        <div class="col-4">
                             <p><u>Runtime</u><br> {{ movie.runtime|default:"N/A" }} minutes</p>
                         </div>
-                        <div class="col-3">
+                        <div class="col-4">
+                            <p><u>Rating</u><br> {{ movie.average_rating }}/10</p>
+                        </div>
+                        <div class="col-12">
                             <p><u>Genres</u><br>
                                 {% for genre in genres %}
                                 {{ genre.genre.name }}{% if not forloop.last %}, {% endif %}
                                 {% endfor %}
                             </p>
                         </div>
-                        <div class="col-3">
-                            <p><u>Rating</u><br> {{ movie.average_rating }}/10</p>
-                        </div>
                     </div>
+                    <h2>Summary</h2>
                     <p class="">{{ movie.description }}</p>
                     <div class="row">
                         <div class="col-12">

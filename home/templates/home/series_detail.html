@@ -17,18 +17,18 @@
                         <div class="col-3">
                             <p><u>Last Aired</u><br> {{ series.last_air_date|date:"d/m/Y"|default:"N/A" }}</p>
                         </div>
-                        <div class="col-2">
+                        <div class="col-3">
                             <p><u>Seasons</u><br> {{ series.number_of_seasons|default:"N/A" }}</p>
                         </div>
-                        <div class="col-2">
+                        <div class="col-3">
+                            <p><u>Rating</u><br> {{ series.average_rating }}/10</p>
+                        </div>
+                        <div class="col-12">
                             <p><u>Genres</u><br>
                                 {% for genre in genres %}
                                 {{ genre.genre.name }}{% if not forloop.last %}, {% endif %}
                                 {% endfor %}
                             </p>
-                        </div>
-                        <div class="col-2">
-                            <p><u>Rating</u><br> {{ series.average_rating }}/10</p>
                         </div>
                     </div>
                     <p class="">{{ series.description }}</p>

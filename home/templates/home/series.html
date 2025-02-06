@@ -4,7 +4,46 @@
 
 <div class="container">
     <h1>Series</h1>
-    <div class="row">
+
+    <!-- Toggle Filter Button -->
+    <div class="d-flex justify-content-end">
+        <button id="toggleFilterButton" class="btn btn-secondary mb-3">Show Filters</button>
+    </div>
+
+    <!-- Filter Form -->
+    <div id="filterFormContainer" style="display: none;">
+        <form id="filterForm" method="GET" action="{% url 'series' %}">
+            <div class="row">
+                <div class="col-md-3">
+                    <label for="genre">Genre</label>
+                    <select name="genre" class="form-control">
+                        <option value="">-- All Genres --</option>
+                        {% for genre in form.genre.field.queryset %}
+                            <option value="{{ genre.id }}" {% if form.genre.value == genre.id %}selected{% endif %}>{{ genre.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label for="first_air_date">First Air Date</label>
+                    <input type="date" name="first_air_date" class="form-control" value="{{ form.first_air_date.value }}">
+                </div>
+                <div class="col-md-3">
+                    <label for="last_air_date">Last Air Date</label>
+                    <input type="date" name="last_air_date" class="form-control" value="{{ form.last_air_date.value }}">
+                </div>
+                <div class="col-md-3">
+                    <label for="number_of_seasons">Number of Seasons</label>
+                    <input type="number" name="number_of_seasons" min="1" class="form-control" value="{{ form.number_of_seasons.value }}">
+                </div>
+            </div>
+            <div class="mt-3">
+                <button id="applyFilterButton" type="submit" class="btn btn-primary">Apply Filters</button>
+                <a href="{% url 'series' %}" class="btn btn-secondary">Clear Filters</a>
+            </div>
+        </form>
+    </div>
+
+    <div class="row mt-4" id="seriesContainer">
         {% for series in series %}
         <div class="col-6 col-sm-3 col-lg-2 mb-4">
             <div class="poster">
@@ -18,3 +57,7 @@
 </div>
 
 {% endblock content %}
+
+{% block extras %}
+<script src="{% static 'js/filters.js' %}"></script>
+{% endblock %}

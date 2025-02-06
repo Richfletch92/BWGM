@@ -73,9 +73,16 @@ class SeriesReviewForm(forms.ModelForm):
                     "content."
                 )
         return content
-    
+
 
 class MovieFilterForm(forms.Form):
     genre = forms.ModelChoiceField(queryset=Genre.objects.all(), required=False)
     min_rating = forms.IntegerField(min_value=1, max_value=10, required=False)
     release_year = forms.IntegerField(min_value=1900, max_value=2100, required=False)
+
+
+class SeriesFilterForm(forms.Form):
+    genre = forms.ModelChoiceField(queryset=Genre.objects.all(), required=False)
+    first_air_date = forms.DateField(required=False, widget=forms.DateInput(attrs={'type': 'date'}))
+    last_air_date = forms.DateField(required=False, widget=forms.DateInput(attrs={'type': 'date'}))
+    number_of_seasons = forms.IntegerField(min_value=1, required=False)

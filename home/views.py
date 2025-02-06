@@ -1,8 +1,8 @@
 from django.shortcuts import render, get_object_or_404, reverse
 from django.contrib import messages
-from django.http import HttpResponseRedirect, JsonResponse
-from .forms import MovieReviewForm, SeriesReviewForm, MovieFilterForm
-from .models import MovieList, MovieGenre, MovieReview, SeriesList, SeriesGenre, SeriesReview, SeasonList
+from django.http import HttpResponseRedirect
+from .forms import MovieReviewForm, SeriesReviewForm, MovieFilterForm, SeriesFilterForm
+from .models import MovieList, MovieGenre, MovieReview, SeriesList, SeriesGenre, SeriesReview, SeasonList, Genre
 
 
 def get_movie_and_reviews(tmdb_id):
@@ -76,10 +76,35 @@ def movies(request):
 
 def series(request):
     series = SeriesList.objects.all().order_by('-first_air_date')
+
+    # Handle filters if present
+    if request.method == "GET":
+        form = SeriesFilterForm(request.GET)
+
+        if form.is_valid():
+            genre = form.cleaned_data.get('genre')
+            first_air_date = form.cleaned_data.get('first_air_date')
+            last_air_date = form.cleaned_data.get('last_air_date')
+            number_of_seasons = form.cleaned_data.get('number_of_seasons')
+
+            if genre:
+                series = series.filter(seriesgenre__genre=genre)
+
+            if first_air_date:
+                series = series.filter(first_air_date__gte=first_air_date)
+
+            if last_air_date:
+                series = series.filter(last_air_date__lte=last_air_date)
+
+            if number_of_seasons:
+                series = series.filter(number_of_seasons=number_of_seasons)
+    else:
+        form = SeriesFilterForm()
+
     return render(
         request,
         'home/series.html',
-        {'series': series}
+        {'series': series, 'form': form}
     )
 
 

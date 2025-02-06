@@ -8,6 +8,7 @@
     --container-color: #191919;
     --shadow-color: #505050;
     --font-color: #ffffff;
+    --font-details-color: #919191;
     --logo-color: #f2f0f1;
     --primary-font: 'Inter', sans-serif;
     --logo-font: 'Atma', cursive;
@@ -56,6 +57,10 @@ body {
     background-color: var(--container-color);
     color: var(--font-color);
     font-family: var(--primary-font);
+}
+
+.search-form .form-control::placeholder {
+    color: var(--font-details-color); /* Change the color to your desired value */
 }
 
 .search-form button[type="submit"] {
@@ -119,6 +124,12 @@ body {
 
 /* Heading Styling */
 h1 {
+    font-weight: 700;
+    font-family: var(--logo-font);
+    text-shadow: 1px 1px 1px #818181;
+}
+
+h2 {
     font-weight: 700;
     font-family: var(--logo-font);
     text-shadow: 1px 1px 1px #818181;
@@ -336,6 +347,8 @@ h1 {
 
 .details-font {
     font-size: 0.75rem;
+    color: var(--font-details-color);
+    
 }
 
 .details-poster img {

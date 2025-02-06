@@ -140,6 +140,9 @@ class SeriesGenre(models.Model):
     series = models.ForeignKey(SeriesList, on_delete=models.CASCADE)
     genre = models.ForeignKey(Genre, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return f"{self.series.title} - {self.genre.name}"
+
 
 class ReviewEntity(models.Model):
     CONTENT_TYPE_CHOICES = [
