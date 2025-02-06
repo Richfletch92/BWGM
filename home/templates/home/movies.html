@@ -16,7 +16,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <label for="genre">Genre</label>
-                    <select name="genre" class="form-control">
+                    <select id="genre" name="genre" class="form-control">
                         <option value="">-- All Genres --</option>
                         {% for genre in form.genre.field.queryset %}
                             <option value="{{ genre.id }}" {% if form.genre.value == genre.id %}selected{% endif %}>{{ genre.name }}</option>
@@ -25,11 +25,11 @@
                 </div>
                 <div class="col-md-4">
                     <label for="min_rating">Minimum Rating</label>
-                    <input type="number" name="min_rating" min="1" max="10" class="form-control" value="{{ form.min_rating.value|default_if_none:'' }}">
+                    <input id="min_rating" type="number" name="min_rating" min="1" max="10" class="form-control" value="{{ form.min_rating.value|default_if_none:'' }}">
                 </div>
                 <div class="col-md-4">
                     <label for="release_year">Release Year</label>
-                    <input type="number" name="release_year" min="1900" max="2100" class="form-control" value="{{ form.release_year.value|default_if_none:'' }}">
+                    <input id="release_year" type="number" name="release_year" min="1900" max="2100" class="form-control" value="{{ form.release_year.value|default_if_none:'' }}">
                 </div>
             </div>
             <div class="mt-3">
