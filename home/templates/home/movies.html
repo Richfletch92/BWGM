@@ -39,16 +39,18 @@
         </form>
     </div>
 
-    <div class="row mt-4" id="moviesContainer">
-        {% for movie in movies %}
-        <div class="col-6 col-sm-3 col-lg-2 mb-4">
-            <div class="poster">
-                <a href="{% url 'movie_detail' movie.tmdb_id %}">
-                    <img src="{{ movie.poster_path }}" alt="{{ movie.title }} poster" class="img-fluid" />
-                </a>
+    <div class="scroll-container-vertical">
+        <div class="row mt-4" id="moviesContainer">
+            {% for movie in movies %}
+            <div class="col-6 col-sm-3 col-lg-2 mb-4">
+                <div class="poster">
+                    <a href="{% url 'movie_detail' movie.tmdb_id %}">
+                        <img src="{{ movie.poster_path }}" alt="{{ movie.title }} poster" class="img-fluid" />
+                    </a>
+                </div>
             </div>
+            {% endfor %}
         </div>
-        {% endfor %}
     </div>
 </div>
 {% endblock content %}
