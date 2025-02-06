@@ -25,15 +25,15 @@
                 </div>
                 <div class="col-md-3">
                     <label for="first_air_date">First Air Date</label>
-                    <input type="date" name="first_air_date" class="form-control" value="{{ form.first_air_date.value }}">
+                    <input type="date" name="first_air_date" class="form-control" value="{{ form.first_air_date.value|default_if_none:'' }}">
                 </div>
                 <div class="col-md-3">
                     <label for="last_air_date">Last Air Date</label>
-                    <input type="date" name="last_air_date" class="form-control" value="{{ form.last_air_date.value }}">
+                    <input type="date" name="last_air_date" class="form-control" value="{{ form.last_air_date.value|default_if_none:'' }}">
                 </div>
                 <div class="col-md-3">
                     <label for="number_of_seasons">Number of Seasons</label>
-                    <input type="number" name="number_of_seasons" min="1" class="form-control" value="{{ form.number_of_seasons.value }}">
+                    <input type="number" name="number_of_seasons" min="1" class="form-control" value="{{ form.number_of_seasons.value|default_if_none:'' }}">
                 </div>
             </div>
             <div class="mt-3">
