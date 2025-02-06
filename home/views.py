@@ -3,6 +3,7 @@ from django.contrib import messages
 from django.http import HttpResponseRedirect
 from .forms import MovieReviewForm, SeriesReviewForm, MovieFilterForm, SeriesFilterForm
 from .models import MovieList, MovieGenre, MovieReview, SeriesList, SeriesGenre, SeriesReview, SeasonList, Genre
+from django.db.models import Count
 
 
 def get_movie_and_reviews(tmdb_id):
@@ -47,9 +48,13 @@ def home(request):
 def movies(request):
     movies = MovieList.objects.all()
 
+    # Get genres associated with movies and order them alphabetically
+    genres = Genre.objects.annotate(movie_count=Count('moviegenre')).filter(movie_count__gt=0).order_by('name')
+
     # Handle filters if present
     if request.method == "GET":
         form = MovieFilterForm(request.GET)
+        form.fields['genre'].queryset = genres
 
         if form.is_valid():
             genre = form.cleaned_data.get('genre')
@@ -66,6 +71,7 @@ def movies(request):
                 movies = movies.filter(release_date__year=release_year)
     else:
         form = MovieFilterForm()
+        form.fields['genre'].queryset = genres
 
     return render(
         request,
@@ -77,9 +83,13 @@ def movies(request):
 def series(request):
     series = SeriesList.objects.all().order_by('-first_air_date')
 
+    # Get genres associated with series and order them alphabetically
+    genres = Genre.objects.annotate(series_count=Count('seriesgenre')).filter(series_count__gt=0).order_by('name')
+
     # Handle filters if present
     if request.method == "GET":
         form = SeriesFilterForm(request.GET)
+        form.fields['genre'].queryset = genres
 
         if form.is_valid():
             genre = form.cleaned_data.get('genre')
@@ -100,6 +110,7 @@ def series(request):
                 series = series.filter(number_of_seasons=number_of_seasons)
     else:
         form = SeriesFilterForm()
+        form.fields['genre'].queryset = genres
 
     return render(
         request,
