@@ -25,7 +25,7 @@
                 </div>
                 <div class="col-md-4">
                     <label for="min_rating">Minimum Rating</label>
-                    <input type="number" name="min_rating" min="1" max="10" class="form-control" value="{{ form.min_rating.value }}">
+                    <input type="number" name="min_rating" min="1" max="10" class="form-control" value="{{ form.min_rating.value|default_if_none:'' }}">
                 </div>
                 <div class="col-md-4">
                     <label for="release_year">Release Year</label>
