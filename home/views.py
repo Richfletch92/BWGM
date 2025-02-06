@@ -4,6 +4,7 @@ from django.http import HttpResponseRedirect
 from .forms import MovieReviewForm, SeriesReviewForm, MovieFilterForm, SeriesFilterForm
 from .models import MovieList, MovieGenre, MovieReview, SeriesList, SeriesGenre, SeriesReview, SeasonList, Genre
 from django.db.models import Count
+from django.contrib.sites.shortcuts import get_current_site
 
 
 def get_movie_and_reviews(tmdb_id):
