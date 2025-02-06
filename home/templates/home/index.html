@@ -9,7 +9,7 @@
             {% for movie in movies %}
             <div class="">
                 <a href="{% url 'movie_detail' movie.tmdb_id %}">
-                    <img src="{{ movie.poster_path }}" alt="{{ movie.title }} poster" />
+                    <img src="{{ movie.poster_path }}" alt="{{ movie.title }} poster">
                 </a>
             </div>
             {% endfor %}
@@ -23,7 +23,7 @@
             {% for series in series %}
             <div class="">
                 <a href="{% url 'series_detail' series.tmdb_id %}">
-                    <img src="{{ series.poster_path }}" alt="{{ series.title }} poster" />
+                    <img src="{{ series.poster_path }}" alt="{{ series.title }} poster">
                 </a>
             </div>
             {% endfor %}
