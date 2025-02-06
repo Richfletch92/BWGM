@@ -16,7 +16,7 @@
             <div class="row">
                 <div class="col-md-3">
                     <label for="genre">Genre</label>
-                    <select name="genre" class="form-control">
+                    <select id="genre" name="genre" class="form-control">
                         <option value="">-- All Genres --</option>
                         {% for genre in form.genre.field.queryset %}
                             <option value="{{ genre.id }}" {% if form.genre.value == genre.id %}selected{% endif %}>{{ genre.name }}</option>
@@ -25,15 +25,15 @@
                 </div>
                 <div class="col-md-3">
                     <label for="first_air_date">First Air Date</label>
-                    <input type="date" name="first_air_date" class="form-control" value="{{ form.first_air_date.value|default_if_none:'' }}">
+                    <input id="first_air_date" type="date" name="first_air_date" class="form-control" value="{{ form.first_air_date.value|default_if_none:'' }}">
                 </div>
                 <div class="col-md-3">
                     <label for="last_air_date">Last Air Date</label>
-                    <input type="date" name="last_air_date" class="form-control" value="{{ form.last_air_date.value|default_if_none:'' }}">
+                    <input id="last_air_date" type="date" name="last_air_date" class="form-control" value="{{ form.last_air_date.value|default_if_none:'' }}">
                 </div>
                 <div class="col-md-3">
                     <label for="number_of_seasons">Number of Seasons</label>
-                    <input type="number" name="number_of_seasons" min="1" class="form-control" value="{{ form.number_of_seasons.value|default_if_none:'' }}">
+                    <input id="number_of_seasons" type="number" name="number_of_seasons" min="1" class="form-control" value="{{ form.number_of_seasons.value|default_if_none:'' }}">
                 </div>
             </div>
             <div class="mt-3">
