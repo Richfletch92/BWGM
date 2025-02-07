@@ -663,6 +663,25 @@ footer .row {
     margin-right: 0;
 }
 
+/* Contact Info Styling */
+.contact-info {
+    font-size: 0.75rem;
+    color: var(--font-color);
+    text-align: center;
+    margin: 0;
+    padding: 10px 0;
+}
+
+.contact-info a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-info a:hover {
+    color: var(--font-color);
+}
+
 /* Social Icons Styling */
 .social-icons a {
     margin-left: 10px; /* Adjust the spacing as needed */
