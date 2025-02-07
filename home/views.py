@@ -47,7 +47,7 @@ def home(request):
 
 
 def movies(request):
-    movies = MovieList.objects.all()
+    movies = MovieList.objects.all().order_by('-release_date')
 
     # Get genres associated with movies and order them alphabetically
     genres = Genre.objects.annotate(movie_count=Count('moviegenre')).filter(movie_count__gt=0).order_by('name')
