@@ -160,4 +160,5 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
-DEFAULT_FROM_EMAIL = 'richfletch92@chimpa.co.uk'
+DEFAULT_FROM_EMAIL = 'support@binge-watchers.co.uk'
+ACCOUNT_EMAIL_SUBJECT_PREFIX = 'Binge Watchers '

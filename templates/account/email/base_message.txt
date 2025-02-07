@@ -3,5 +3,5 @@
 {% block content %}{% endblock content %}
 
 {% blocktrans with site_domain=current_site.domain %}Thank you for using Binge-Watchers!
-{{ site_domain }}{% endblocktrans %}
+{% endblocktrans %}
 {% endautoescape %}
