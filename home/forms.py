@@ -4,6 +4,9 @@ from django.core.exceptions import ValidationError
 
 
 class MovieReviewForm(forms.ModelForm):
+    """
+    Form for submitting a movie review.
+    """
     class Meta:
         model = MovieReview
         fields = ['rating', 'content']
@@ -18,6 +21,10 @@ class MovieReviewForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
 
     def clean_content(self):
+        """
+        Validate that the user has not submitted a review with the same
+        content for the same movie.
+        """
         content = self.cleaned_data.get('content')
         if self.instance.pk:
             # Exclude the current review from the validation check
@@ -37,9 +44,12 @@ class MovieReviewForm(forms.ModelForm):
                     "content."
                 )
         return content
-    
+
 
 class SeriesReviewForm(forms.ModelForm):
+    """
+    Form for submitting a series review.
+    """
     class Meta:
         model = SeriesReview
         fields = ['rating', 'content']
@@ -54,6 +64,10 @@ class SeriesReviewForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
 
     def clean_content(self):
+        """
+        Validate that the user has not submitted a review with the same
+        content for the same series.
+        """
         content = self.cleaned_data.get('content')
         if self.instance.pk:
             # Exclude the current review from the validation check
@@ -76,13 +90,34 @@ class SeriesReviewForm(forms.ModelForm):
 
 
 class MovieFilterForm(forms.Form):
-    genre = forms.ModelChoiceField(queryset=Genre.objects.none(), required=False)
-    min_rating = forms.IntegerField(min_value=1, max_value=10, required=False)
-    release_year = forms.IntegerField(min_value=1900, max_value=2100, required=False)
+    """
+    Form for filtering movies based on genre, rating, and release year.
+    """
+    genre = forms.ModelChoiceField(
+        queryset=Genre.objects.none(), required=False
+    )
+    min_rating = forms.IntegerField(
+        min_value=1, max_value=10, required=False
+    )
+    release_year = forms.IntegerField(
+        min_value=1900, max_value=2100, required=False
+    )
 
 
 class SeriesFilterForm(forms.Form):
-    genre = forms.ModelChoiceField(queryset=Genre.objects.none(), required=False)
-    first_air_date = forms.DateField(required=False, widget=forms.DateInput(attrs={'type': 'date'}))
-    last_air_date = forms.DateField(required=False, widget=forms.DateInput(attrs={'type': 'date'}))
-    number_of_seasons = forms.IntegerField(min_value=1, required=False)
+    """
+    Form for filtering series based on genre, air dates, and number of
+    seasons.
+    """
+    genre = forms.ModelChoiceField(
+        queryset=Genre.objects.none(), required=False
+    )
+    first_air_date = forms.DateField(
+        required=False, widget=forms.DateInput(attrs={'type': 'date'})
+    )
+    last_air_date = forms.DateField(
+        required=False, widget=forms.DateInput(attrs={'type': 'date'})
+    )
+    number_of_seasons = forms.IntegerField(
+        min_value=1, required=False
+    )
