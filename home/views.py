@@ -1,31 +1,66 @@
 from django.shortcuts import render, get_object_or_404, reverse
 from django.contrib import messages
 from django.http import HttpResponseRedirect
-from .forms import MovieReviewForm, SeriesReviewForm, MovieFilterForm, SeriesFilterForm
-from .models import MovieList, MovieGenre, MovieReview, SeriesList, SeriesGenre, SeriesReview, SeasonList, Genre
+from .forms import (
+    MovieReviewForm, SeriesReviewForm, MovieFilterForm, SeriesFilterForm
+)
+from .models import (
+    MovieList, MovieGenre, MovieReview, SeriesList, SeriesGenre,
+    SeriesReview, SeasonList, Genre
+)
 from django.db.models import Count
 from django.contrib.sites.shortcuts import get_current_site
 
 
 def get_movie_and_reviews(tmdb_id):
+    """
+    Retrieve a movie and its associated genres, reviews, review count,
+    and average rating.
+    """
     movie = get_object_or_404(MovieList, tmdb_id=tmdb_id)
     genres = MovieGenre.objects.filter(movie=movie).select_related('genre')
-    reviews = MovieReview.objects.filter(movie=movie).order_by('-date_created')
+    reviews = MovieReview.objects.filter(movie=movie).order_by(
+        '-date_created'
+    )
     review_count = reviews.filter(approved=True).count()
     average_rating = movie.average_rating()
     return movie, genres, reviews, review_count, average_rating
 
 
 def get_series_and_reviews(tmdb_id):
+    """
+    Retrieve a TV series and its associated genres, reviews, review count,
+    and average rating.
+    """
     series = get_object_or_404(SeriesList, tmdb_id=tmdb_id)
-    genres = SeriesGenre.objects.filter(series=series).select_related('genre')
-    reviews = SeriesReview.objects.filter(series=series).order_by('-date_created')
+    genres = SeriesGenre.objects.filter(series=series).select_related(
+        'genre'
+    )
+    reviews = SeriesReview.objects.filter(series=series).order_by(
+        '-date_created'
+    )
     review_count = reviews.filter(approved=True).count()
     average_rating = series.average_rating()
     return series, genres, reviews, review_count, average_rating
 
 
-def handle_review_form(request, form, review, success_message, error_message, redirect_url):
+def handle_review_form(
+    request, form, review, success_message, error_message, redirect_url
+):
+    """
+    Handle the submission of a review form.
+
+    Args:
+        request: The HTTP request object.
+        form: The review form instance.
+        review: The review instance.
+        success_message: The success message to display.
+        error_message: The error message to display.
+        redirect_url: The URL to redirect to after handling the form.
+
+    Returns:
+        HttpResponseRedirect: A redirect response to the specified URL.
+    """
     if form.is_valid() and review.user == request.user:
         review = form.save(commit=False)
         review.approved = False
@@ -37,6 +72,9 @@ def handle_review_form(request, form, review, success_message, error_message, re
 
 
 def home(request):
+    """
+    View function for the home page.
+    """
     movies = MovieList.objects.all()[:25]
     series = SeriesList.objects.all().order_by('-first_air_date')[:25]
     return render(
@@ -47,12 +85,14 @@ def home(request):
 
 
 def movies(request):
+    """
+    View function for the movies page with filtering options.
+    """
     movies = MovieList.objects.all().order_by('-release_date')
+    genres = Genre.objects.annotate(
+        movie_count=Count('moviegenre')
+    ).filter(movie_count__gt=0).order_by('name')
 
-    # Get genres associated with movies and order them alphabetically
-    genres = Genre.objects.annotate(movie_count=Count('moviegenre')).filter(movie_count__gt=0).order_by('name')
-
-    # Handle filters if present
     if request.method == "GET":
         form = MovieFilterForm(request.GET)
         form.fields['genre'].queryset = genres
@@ -82,12 +122,14 @@ def movies(request):
 
 
 def series(request):
+    """
+    View function for the series page with filtering options.
+    """
     series = SeriesList.objects.all().order_by('-first_air_date')
+    genres = Genre.objects.annotate(
+        series_count=Count('seriesgenre')
+    ).filter(series_count__gt=0).order_by('name')
 
-    # Get genres associated with series and order them alphabetically
-    genres = Genre.objects.annotate(series_count=Count('seriesgenre')).filter(series_count__gt=0).order_by('name')
-
-    # Handle filters if present
     if request.method == "GET":
         form = SeriesFilterForm(request.GET)
         form.fields['genre'].queryset = genres
@@ -121,9 +163,16 @@ def series(request):
 
 
 def movie_detail(request, tmdb_id):
-    movie, genres, reviews, review_count, average_rating = get_movie_and_reviews(tmdb_id)
+    """
+    View function for displaying movie details and handling reviews.
+    """
+    movie, genres, reviews, review_count, average_rating = (
+        get_movie_and_reviews(tmdb_id)
+    )
     if request.user.is_authenticated:
-        reviews = MovieReview.objects.filter(movie=movie).order_by('-date_created')
+        reviews = MovieReview.objects.filter(movie=movie).order_by(
+            '-date_created'
+        )
     else:
         reviews = reviews.filter(approved=True)
 
@@ -134,8 +183,12 @@ def movie_detail(request, tmdb_id):
             review.user = request.user
             review.movie = movie
             review.save()
-            messages.add_message(request, messages.SUCCESS, 'Review submitted successfully!')
-            return HttpResponseRedirect(reverse('movie_detail', args=[movie.tmdb_id]))
+            messages.add_message(
+                request, messages.SUCCESS, 'Review submitted successfully!'
+            )
+            return HttpResponseRedirect(
+                reverse('movie_detail', args=[movie.tmdb_id])
+            )
         else:
             for errors in form.errors.values():
                 for error in errors:
@@ -159,17 +212,25 @@ def movie_detail(request, tmdb_id):
 
 
 def movie_review_edit(request, tmdb_id, review_id):
+    """
+    View function for editing a movie review.
+    """
     if request.method == "POST":
         movie = get_object_or_404(MovieList, tmdb_id=tmdb_id)
         review = get_object_or_404(MovieReview, pk=review_id)
-        review_form = MovieReviewForm(data=request.POST, instance=review, user=request.user, movie=movie)
+        review_form = MovieReviewForm(
+            data=request.POST, instance=review, user=request.user, movie=movie
+        )
         return handle_review_form(
-            request, review_form, review, 'Review Updated!', 'Error updating review!',
-            reverse('movie_detail', args=[tmdb_id])
+            request, review_form, review, 'Review Updated!',
+            'Error updating review!', reverse('movie_detail', args=[tmdb_id])
         )
 
 
 def movie_review_delete(request, tmdb_id, review_id):
+    """
+    View function for deleting a movie review.
+    """
     movie = get_object_or_404(MovieList, tmdb_id=tmdb_id)
     review = get_object_or_404(MovieReview, pk=review_id)
     if review.user == request.user:
@@ -181,22 +242,35 @@ def movie_review_delete(request, tmdb_id, review_id):
 
 
 def series_detail(request, tmdb_id):
-    series, genres, reviews, review_count, average_rating = get_series_and_reviews(tmdb_id)
-    seasons = SeasonList.objects.filter(series=series)  # Fetch seasons for the series
+    """
+    View function for displaying series details and handling reviews.
+    """
+    series, genres, reviews, review_count, average_rating = (
+        get_series_and_reviews(tmdb_id)
+    )
+    seasons = SeasonList.objects.filter(series=series)
     if request.user.is_authenticated:
-        reviews = SeriesReview.objects.filter(series=series).order_by('-date_created')
+        reviews = SeriesReview.objects.filter(series=series).order_by(
+            '-date_created'
+        )
     else:
         reviews = reviews.filter(approved=True)
 
     if request.method == "POST":
-        form = SeriesReviewForm(request.POST, user=request.user, series=series)
+        form = SeriesReviewForm(
+            request.POST, user=request.user, series=series
+        )
         if form.is_valid():
             review = form.save(commit=False)
             review.user = request.user
             review.series = series
             review.save()
-            messages.add_message(request, messages.SUCCESS, 'Review submitted successfully!')
-            return HttpResponseRedirect(reverse('series_detail', args=[series.tmdb_id]))
+            messages.add_message(
+                request, messages.SUCCESS, 'Review submitted successfully!'
+            )
+            return HttpResponseRedirect(
+                reverse('series_detail', args=[series.tmdb_id])
+            )
         else:
             for errors in form.errors.values():
                 for error in errors:
@@ -215,23 +289,32 @@ def series_detail(request, tmdb_id):
             'average_rating': average_rating,
             'form': form,
             'user': request.user,
-            'seasons': seasons  # Pass seasons to the template
+            'seasons': seasons
         }
     )
 
 
 def series_review_edit(request, tmdb_id, review_id):
+    """
+    View function for editing a series review.
+    """
     if request.method == "POST":
         series = get_object_or_404(SeriesList, tmdb_id=tmdb_id)
         review = get_object_or_404(SeriesReview, pk=review_id)
-        review_form = SeriesReviewForm(data=request.POST, instance=review, user=request.user, series=series)
+        review_form = SeriesReviewForm(
+            data=request.POST, instance=review, user=request.user,
+            series=series
+        )
         return handle_review_form(
-            request, review_form, review, 'Review Updated!', 'Error updating review!',
-            reverse('series_detail', args=[tmdb_id])
+            request, review_form, review, 'Review Updated!',
+            'Error updating review!', reverse('series_detail', args=[tmdb_id])
         )
 
 
 def series_review_delete(request, tmdb_id, review_id):
+    """
+    View function for deleting a series review.
+    """
     series = get_object_or_404(SeriesList, tmdb_id=tmdb_id)
     review = get_object_or_404(SeriesReview, pk=review_id)
     if review.user == request.user:
@@ -243,6 +326,9 @@ def series_review_delete(request, tmdb_id, review_id):
 
 
 def search_results(request):
+    """
+    View function for displaying search results.
+    """
     query = request.GET.get('q')
     movies = MovieList.objects.filter(title__icontains=query)
     series = SeriesList.objects.filter(title__icontains=query)
