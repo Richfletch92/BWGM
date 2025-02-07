@@ -5,6 +5,9 @@ from django.templatetags.static import static
 
 
 class MovieList(models.Model):
+    """
+    Model representing a movie.
+    """
     tmdb_id = models.IntegerField(unique=True)
     title = models.CharField(max_length=200)
     description = models.TextField()
@@ -13,12 +16,17 @@ class MovieList(models.Model):
     runtime = models.IntegerField(null=True, blank=True)
 
     def save(self, *args, **kwargs):
+        """
+        Override save method to set a default poster path if none is provided.
+        """
         if self.poster_path == 'https://image.tmdb.org/t/p/w500None':
-            # Set your default poster path here
             self.poster_path = static('images/default_poster.jpeg')
         super().save(*args, **kwargs)
 
     def average_rating(self):
+        """
+        Calculate and return the average rating of the movie.
+        """
         avg_rating = self.moviereview_set.filter(approved=True).aggregate(
             Avg('rating')
         )['rating__avg']
@@ -31,6 +39,9 @@ class MovieList(models.Model):
 
 
 class SeriesList(models.Model):
+    """
+    Model representing a TV series.
+    """
     tmdb_id = models.IntegerField(unique=True)
     title = models.CharField(max_length=200)
     description = models.TextField()
@@ -40,12 +51,17 @@ class SeriesList(models.Model):
     number_of_seasons = models.IntegerField(null=True, blank=True)
 
     def save(self, *args, **kwargs):
+        """
+        Override save method to set a default poster path if none is provided.
+        """
         if self.poster_path == 'https://image.tmdb.org/t/p/w500None':
-            # Set your default poster path here
             self.poster_path = static('images/default_poster.jpeg')
         super().save(*args, **kwargs)
 
     def average_rating(self):
+        """
+        Calculate and return the average rating of the series.
+        """
         avg_rating = self.seriesreview_set.filter(approved=True).aggregate(
             Avg('rating')
         )['rating__avg']
@@ -58,6 +74,9 @@ class SeriesList(models.Model):
 
 
 class SeasonList(models.Model):
+    """
+    Model representing a season of a TV series.
+    """
     series = models.ForeignKey(SeriesList, on_delete=models.CASCADE)
     season_number = models.IntegerField()
     episode_count = models.IntegerField()
@@ -68,6 +87,9 @@ class SeasonList(models.Model):
     poster_path = models.URLField(null=True, blank=True)
 
     def save(self, *args, **kwargs):
+        """
+        Override save method to set a default poster path if none is provided.
+        """
         if self.poster_path == 'https://image.tmdb.org/t/p/w500None':
             self.poster_path = self.series.poster_path
         super().save(*args, **kwargs)
@@ -77,6 +99,9 @@ class SeasonList(models.Model):
 
 
 class MovieReview(models.Model):
+    """
+    Model representing a review of a movie.
+    """
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     movie = models.ForeignKey(MovieList, on_delete=models.CASCADE)
     rating = models.IntegerField()
@@ -93,6 +118,9 @@ class MovieReview(models.Model):
 
 
 class SeriesReview(models.Model):
+    """
+    Model representing a review of a TV series.
+    """
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     series = models.ForeignKey(SeriesList, on_delete=models.CASCADE)
     rating = models.IntegerField()
@@ -109,6 +137,9 @@ class SeriesReview(models.Model):
 
 
 class SeasonReview(models.Model):
+    """
+    Model representing a review of a season of a TV series.
+    """
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     season = models.ForeignKey(SeasonList, on_delete=models.CASCADE)
     rating = models.IntegerField()
@@ -125,6 +156,9 @@ class SeasonReview(models.Model):
 
 
 class Genre(models.Model):
+    """
+    Model representing a genre.
+    """
     name = models.CharField(max_length=100)
 
     def __str__(self):
@@ -132,11 +166,17 @@ class Genre(models.Model):
 
 
 class MovieGenre(models.Model):
+    """
+    Model representing the relationship between a movie and a genre.
+    """
     movie = models.ForeignKey(MovieList, on_delete=models.CASCADE)
     genre = models.ForeignKey(Genre, on_delete=models.CASCADE)
 
 
 class SeriesGenre(models.Model):
+    """
+    Model representing the relationship between a TV series and a genre.
+    """
     series = models.ForeignKey(SeriesList, on_delete=models.CASCADE)
     genre = models.ForeignKey(Genre, on_delete=models.CASCADE)
 
@@ -145,6 +185,9 @@ class SeriesGenre(models.Model):
 
 
 class ReviewEntity(models.Model):
+    """
+    Model representing a review entity for likes and comments.
+    """
     CONTENT_TYPE_CHOICES = [
         ('movie_review', 'Movie Review'),
         ('series_review', 'Series Review'),
@@ -157,12 +200,18 @@ class ReviewEntity(models.Model):
 
 
 class ReviewLike(models.Model):
+    """
+    Model representing a like on a review.
+    """
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     review_entity = models.ForeignKey(ReviewEntity, on_delete=models.CASCADE)
     date_created = models.DateTimeField(auto_now_add=True)
 
 
 class ReviewComment(models.Model):
+    """
+    Model representing a comment on a review.
+    """
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     review_entity = models.ForeignKey(ReviewEntity, on_delete=models.CASCADE)
     content = models.TextField()
