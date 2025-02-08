@@ -13,14 +13,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Binge-Watchers</title>
-    <meta name="description" content="Binge-Watchers: Your ultimate destination for movie and TV series reviews, ratings, and recommendations.">
+    <meta name="description"
+        content="Binge-Watchers: Your ultimate destination for movie and TV series reviews, ratings, and recommendations.">
     <meta name="keywords" content="movies, TV series, reviews, ratings, recommendations, binge-watchers">
     <meta name="author" content="Binge-Watchers">
     <meta property="og:title" content="Binge-Watchers">
-    <meta property="og:description" content="Your ultimate destination for movie and TV series reviews, ratings, and recommendations.">
+    <meta property="og:description"
+        content="Your ultimate destination for movie and TV series reviews, ratings, and recommendations.">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Binge-Watchers">
-    <meta name="twitter:description" content="Your ultimate destination for movie and TV series reviews, ratings, and recommendations.">
+    <meta name="twitter:description"
+        content="Your ultimate destination for movie and TV series reviews, ratings, and recommendations.">
 
     <!-- Favicons -->
     <link rel="apple-touch-icon" sizes="180x180" href="{% static '/images/apple-touch-icon.png' %}">
@@ -82,7 +85,8 @@
                         {% endif %}
                     </ul>
                     <form class="d-flex search-form" role="search" method="GET" action="{% url 'search_results' %}">
-                        <input class="form-control me-2" type="search" name="q" placeholder="Search" aria-label="Search">
+                        <input class="form-control me-2" type="search" name="q" placeholder="Search"
+                            aria-label="Search">
                         <button class="btn btn-outline-success" type="submit">Search</button>
                     </form>
                 </div>
@@ -120,11 +124,15 @@
         <div class="row">
             <div class="col-4">
                 <p class="m-0 text-center">© <span id="year"></span> Binge-Watchers</p>
+                <p>Data provided by <a href="https://www.themoviedb.org/" target="_blank" rel="noopener"
+                    aria-label="Visit The Movie Database (TMDb) page (opens in a new tab)">
+                    <img src="{% static 'images/tmdb.svg' %}" alt="TMDb" style="width: 24px; height: 24px;">
+                </a></p>
             </div>
             <div class="col-4">
                 <p class="m-0 text-center">Made by Binge-Watchers</p>
                 <p class="contact-info">
-                    Get in touch: 
+                    Get in touch:
                     <a href="mailto:contact-us@binge-watchers.co.uk">contact-us@binge-watchers.co.uk</a>
                 </p>
             </div>
@@ -152,11 +160,6 @@
                         <i class="fa-brands fa-github-square"></i>
                     </a>
                 </div>
-            </div>
-        </div>
-        <div class="row mt-2">
-            <div class="col-12 text-center">
-                <p>Data provided by <a href="https://www.themoviedb.org/" target="_blank" rel="noopener">The Movie Database (TMDb)</a></p>
             </div>
         </div>
     </footer>
