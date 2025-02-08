@@ -650,8 +650,9 @@ h2 {
 /* Footer Styling */
 footer {
     background-color: var(--secondary-color);
+    color: var(--font-color);
     text-align: center;
-    padding: 10px 0;
+    padding: 20px 0;
     position: relative;
     bottom: 0;
     width: 100%;
@@ -661,10 +662,14 @@ footer {
 
 footer .row {
     margin-right: 0;
+    margin-left: 0;
 }
 
-/* Contact Info Styling */
-.contact-info {
+footer p {
+    margin: 5px 0;
+}
+
+footer .contact-info {
     font-size: 0.75rem;
     color: var(--font-color);
     text-align: center;
@@ -672,28 +677,27 @@ footer .row {
     padding: 10px 0;
 }
 
-.contact-info a {
+footer .contact-info a {
     color: var(--primary-color);
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
-.contact-info a:hover {
+footer .contact-info a:hover {
     color: var(--font-color);
 }
 
-/* Social Icons Styling */
-.social-icons a {
-    margin-left: 10px; /* Adjust the spacing as needed */
-    color: white; /* Ensure the icons are white */
+footer .social-icons a {
+    margin: 0 10px; /* Adjust the spacing as needed */
+    color: var(--font-color); /* Ensure the icons match the font color */
     text-decoration: none; /* Remove underline */
 }
 
-.social-icons a i {
+footer .social-icons a i {
     font-size: 1.5rem; /* Adjust the size as needed */
     transition: color 0.3s ease; /* Add a transition effect */
 }
 
-.social-icons a:hover i {
+footer .social-icons a:hover i {
     color: var(--primary-color); /* Change color on hover */
 }
