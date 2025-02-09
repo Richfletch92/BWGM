@@ -1,6 +1,6 @@
 # Binge-Watchers
 
-![Responsive Image](readme\images\responsive.png)
+![Responsive Image](readme/images/responsive.png)
 
 ## Table of Contents
 - [Overview](#overview)
@@ -22,9 +22,9 @@ Binge-Watchers is your ultimate destination for movie and TV series reviews, rat
 ## UX Design Process
 - **Link to User Stories in GitHub Projects:**
   - [GitHub Projects Kanban Board](https://github.com/users/Richfletch92/projects/9)
-  - I've also added my user stories to a separate [document](readme\userstories.md).
+  - I've also added my user stories to a separate [document](readme/userstories.md).
 - **Wireframes:**
-  - [Wireframes](readme\wireframes.md) - Here are my intial designs for the website. I had orignally planned to create another page for each individual season however due to time constrants I ran out of time so I've added that to my future plans. 
+  - [Wireframes](readme/wireframes.md) - Here are my intial designs for the website. I had orignally planned to create another page for each individual season however due to time constrants I ran out of time so I've added that to my future plans. 
   - The design focuses on usability and accessibility for all users, including those using assistive technologies.
 - **Design Rationale:**
   - Key design decisions include a clean layout, a consistent colour scheme, and typography that adheres to accessibility guidelines (e.g., WCAG).
@@ -115,11 +115,11 @@ Binge-Watchers is your ultimate destination for movie and TV series reviews, rat
 
 - **Verification and Validation:**
   - Steps taken to verify the deployed version include functionality checks and accessibility tests.
-  - Use of [Lighthouse](https://github.com/GoogleChrome/lighthouse) to check performance and accessibility. Accessibility is excellent scoring 100 on every page. Performance could have been better on mobile. Main issues with performance were due to the images gotten from TMDb API. [Results](readme\lighthouse.md)
-  - [W3C HTML Validator](https://validator.w3.org/) used to validate HTML. All results passed apart from my registration page which unfortunately was out of my control due to AllAuth's forms having issues [Results](readme\html.md)
-  - [W3C CSS Validator](https://jigsaw.w3.org/css-validator/) used to validate CSS [Results](readme\css.md)
-  - [JSHint JavaScript Validator](https://jshint.com/) used to validate JS [Results](readme\js.md)
-  - [CI Python Linter Validator](https://pep8ci.herokuapp.com/) used to validate Python [Results](readme\python.md)
+  - Use of [Lighthouse](https://github.com/GoogleChrome/lighthouse) to check performance and accessibility. Accessibility is excellent scoring 100 on every page. Performance could have been better on mobile. Main issues with performance were due to the images gotten from TMDb API. [Results](readme/lighthouse.md)
+  - [W3C HTML Validator](https://validator.w3.org/) used to validate HTML. All results passed apart from my registration page which unfortunately was out of my control due to AllAuth's forms having issues [Results](readme/html.md)
+  - [W3C CSS Validator](https://jigsaw.w3.org/css-validator/) used to validate CSS [Results](readme/css.md)
+  - [JSHint JavaScript Validator](https://jshint.com/) used to validate JS [Results](readme/js.md)
+  - [CI Python Linter Validator](https://pep8ci.herokuapp.com/) used to validate Python [Results](readme/python.md)
 - **Security Measures:**
   - Use of environment variables for sensitive data.
   - Ensured DEBUG mode is disabled in production.

@@ -2,4 +2,4 @@
 
 ## Styles.css
 
-![CSS Screenshot](validation\css\css.png)
+![CSS Screenshot](validation/css/css.png)
