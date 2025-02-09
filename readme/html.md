@@ -21,7 +21,7 @@
 ![Series Details Screenshot](validation/html/series-details.png)
 
 ## Register
-Some errors are registered but this is due to AllAuths forms which cannot be edited.
+Some errors are registered but this is due to AllAuth's forms which cannot be edited.
 ![Register Screenshot](validation/html/sign-up-1.png)
 ![Register Screenshot](validation/html/sign-up-2.png)
 

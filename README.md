@@ -24,13 +24,15 @@ Binge-Watchers is your ultimate destination for movie and TV series reviews, rat
   - [GitHub Projects Kanban Board](https://github.com/users/Richfletch92/projects/9)
   - I've also added my user stories to a separate [document](readme/userstories.md).
 - **Wireframes:**
-  - [Wireframes](readme/wireframes.md) - Here are my intial designs for the website. I had orignally planned to create another page for each individual season however due to time constrants I ran out of time so I've added that to my future plans. 
+  - [Wireframes](readme/wireframes.md) - Here are my initial designs for the website. I had originally planned to create another page for each individual season however due to time constraints I ran out of time so I've added that to my future plans. 
   - The design focuses on usability and accessibility for all users, including those using assistive technologies.
+- **Entity Relationship Diagram**
+  - [ERDs](readme/images/erds/erds.png) - I followed my ERDs very closely as you can see there are a few extra tables due to future planning. I have used parts of the season table however there are more values being stored that were not used. I also have the review_comment and review_like tables again these are there for future plans. 
 - **Design Rationale:**
   - Key design decisions include a clean layout, a consistent colour scheme, and typography that adheres to accessibility guidelines (e.g., WCAG).
   - Considerations for users with disabilities include screen reader support and keyboard navigation.
   **Design Changes**
-  - Although I have followed my designs quite closely some changes have been made due to user feedback and techinical issues. I had to move away from having the login and registration pages on modals due to having issues getitng the forms to work. I plan to implement this in the future. 
+  - Although I have followed my designs quite closely some changes have been made due to user feedback and technical issues. I had to move away from having the login and registration pages on modals due to having issues getting the forms to work. I plan to implement this in the future. 
 
 ## Key Features
 - **Movie and TV Series Details:**
@@ -51,7 +53,6 @@ Binge-Watchers is your ultimate destination for movie and TV series reviews, rat
 - **Search Functionality:**
   - Provides a search bar on the homepage and other relevant pages.
   - Users can search for movies and TV series by title or genre.
-  - Each search result includes relevant details such as title, image, and brief description.
 
 - **Responsive Design:**
   - The website layout is fully responsive and adapts to different screen sizes.
@@ -147,8 +148,8 @@ Binge-Watchers is your ultimate destination for movie and TV series reviews, rat
 
 ## Testing Summary
 - **Manual Testing:**
-  - **Overview:** Testing was continuously done during developement, AI was used to check through code consistently to spot any typos and missing closing elements. 
-  - **Devices and Browsers Tested:** Tested on various devices Android and Apple devices. I had friends and family who tested on a variety of mobile devices and computers. Browsers used was Chrome, Edge and Safari. I also tested using dev tools to resize the screen to ensure my website was responsive.
+  - **Overview:** Testing was continuously done during development, AI was used to check through code consistently to spot any typos and missing closing elements. Also all code was put through validators to ensure no issues with code. 
+  - **Devices and Browsers Tested:** Tested on various devices Android and Apple devices. I had friends and family who tested on a variety of mobile devices and computers. The browsers used were Chrome, Edge and Safari. I also tested using dev tools to resize the screen to ensure my website was responsive.
   - **Features Tested:** CRUD operations, navigation, filtering, review submission, user registration and password resetting.
   - **Results:** All critical features worked as expected, including accessibility checks. 
 
