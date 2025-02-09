@@ -1,4 +1,6 @@
-# Create a registration form
+# User Stories
+
+## Create a registration form
 
 As a visitor, I want to access a registration form so that I can provide my email and password to create an account.
 
@@ -14,7 +16,7 @@ As a visitor, I want to access a registration form so that I can provide my emai
 
 
 
-# Validate email format and password strength
+## Validate email format and password strength
 
 As a visitor, I want my email and password validated when registering so that I can ensure my information is correct and secure.
 
@@ -31,7 +33,7 @@ As a visitor, I want my email and password validated when registering so that I 
 
 
 
-# Send a confirmation email after registration
+## Send a confirmation email after registration
 
 As a visitor, I want to receive a confirmation email after registering so that I can verify my email address and activate my account.
 
@@ -49,7 +51,7 @@ As a visitor, I want to receive a confirmation email after registering so that I
 
 
 
-# Verify email address and activate account
+## Verify email address and activate account
 
 As a visitor, I want to verify my email address so that I can activate my account and log in.
 
@@ -67,7 +69,7 @@ As a visitor, I want to verify my email address so that I can activate my accoun
 
 
 
-# Register using social media accounts
+## Register using social media accounts
 
 
 As a visitor, I want to register using my social media accounts so that I can sign up quickly without creating a new password.
@@ -87,7 +89,7 @@ As a visitor, I want to register using my social media accounts so that I can si
 
 
 
-# Add a search bar to the site
+## Add a search bar to the site
 
 As a user, I want to see a search bar on the site so that I can type in keywords to find movies or series.
 
@@ -103,7 +105,7 @@ As a user, I want to see a search bar on the site so that I can type in keywords
 
 
 
-# Implement backend for search functionality
+## Implement backend for search functionality
 
 As a user, I want the system to process my search queries so that I can find movies or series based on titles, genres, or actors.
 
@@ -120,7 +122,7 @@ As a user, I want the system to process my search queries so that I can find mov
 
 
 
-# Display search results dynamically
+## Display search results dynamically
 
 As a user, I want to see relevant results displayed dynamically as I type so that I can quickly find movies or series that match my query.
 
@@ -139,7 +141,7 @@ As a user, I want to see relevant results displayed dynamically as I type so tha
 
 
 
-# Add filtering options for movies and series
+## Add filtering options for movies and series
 
 As a user, I want to see filtering options for movies and series so that I can select criteria to narrow down the content.
 
@@ -154,7 +156,7 @@ As a user, I want to see filtering options for movies and series so that I can s
 
 
 
-# Implement backend filtering functionality
+## Implement backend filtering functionality
 
 As a user, I want the system to filter movies and series based on selected criteria so that I can view only the content that matches my preferences.
 
@@ -171,7 +173,7 @@ As a user, I want the system to filter movies and series based on selected crite
 
 
 
-# Apply filters dynamically on the frontend
+## Apply filters dynamically on the frontend
 
 As a user, I want the movie/series list to update dynamically when I apply filters so that I can immediately see relevant results without reloading the page.
 
@@ -188,7 +190,7 @@ As a user, I want the movie/series list to update dynamically when I apply filte
 
 
 
-# Add a "Clear Filters" button
+## Add a "Clear Filters" button
 
 As a user, I want a "Clear Filters" button so that I can reset all filters and see the full list of movies and series again.
 
@@ -204,7 +206,7 @@ As a user, I want a "Clear Filters" button so that I can reset all filters and s
 
 
 
-# Add a movie review form
+## Add a movie review form
 
 As a user, I want a form on the movie page so that I can submit my review and share my thoughts about the movie.
 
@@ -222,7 +224,7 @@ As a user, I want a form on the movie page so that I can submit my review and sh
 
 
 
-# Submit and store movie reviews
+## Submit and store movie reviews
 
 As a user, I want my movie review saved to the system so that it can be displayed on the movie page.
 
@@ -240,7 +242,7 @@ As a user, I want my movie review saved to the system so that it can be displaye
 
 
 
-# Display reviews on the movie page
+## Display reviews on the movie page
 
 As a user, I want to see submitted reviews on the movie page so that I can read what others think about the movie.
 
@@ -257,7 +259,7 @@ As a user, I want to see submitted reviews on the movie page so that I can read 
 
 
 
-# Allow users to edit or delete their reviews
+## Allow users to edit or delete their reviews
 
 As a user, I want to edit or delete my reviews so that I can update my thoughts or remove them if needed.
 
@@ -274,7 +276,7 @@ As a user, I want to edit or delete my reviews so that I can update my thoughts 
 
 
 
-# Add a review form for TV series
+## Add a review form for TV series
 
 As a user, I want a form on the TV series page so that I can submit my review and share my opinions about the series.
 
@@ -292,7 +294,7 @@ As a user, I want a form on the TV series page so that I can submit my review an
 
 
 
-# Submit and store TV series reviews
+## Submit and store TV series reviews
 
 As a user, I want my review for a TV series saved to the system so that it can be displayed on the TV series page.
 
@@ -310,7 +312,7 @@ As a user, I want my review for a TV series saved to the system so that it can b
 
 
 
-# Display reviews on the TV series page
+## Display reviews on the TV series page
 
 As a user, I want to see submitted reviews on the TV series page so that I can read what others think about the series.
 
@@ -327,7 +329,7 @@ As a user, I want to see submitted reviews on the TV series page so that I can r
 
 
 
-# Allow users to edit or delete their TV series reviews
+## Allow users to edit or delete their TV series reviews
 
 As a user, I want to edit or delete my reviews so that I can update my opinions or remove them if needed.
 
@@ -344,7 +346,7 @@ As a user, I want to edit or delete my reviews so that I can update my opinions 
 
 
 
-# Add a review form for individual seasons of a TV series
+## Add a review form for individual seasons of a TV series
 
 As a user, I want a form on each season's page so that I can submit my review and share my feedback about that season.
 
@@ -362,7 +364,7 @@ As a user, I want a form on each season's page so that I can submit my review an
 
 
 
-# Submit and store reviews for individual seasons
+## Submit and store reviews for individual seasons
 
 As a user, I want my review for an individual season saved to the system so that it can be displayed on that season’s page.
 
@@ -380,7 +382,7 @@ As a user, I want my review for an individual season saved to the system so that
 
 
 
-# Display reviews on the season page
+## Display reviews on the season page
 
 As a user, I want to see submitted reviews on the season page so that I can read what others think about that season.
 
@@ -397,7 +399,7 @@ As a user, I want to see submitted reviews on the season page so that I can read
 
 
 
-# Allow users to edit or delete their reviews for individual seasons
+## Allow users to edit or delete their reviews for individual seasons
 
 As a user, I want to edit or delete my reviews for individual seasons so that I can update my feedback or remove it if needed.
 
@@ -414,7 +416,7 @@ As a user, I want to edit or delete my reviews for individual seasons so that I 
 
 
 
-# Integrate TMDb API for movie details
+## Integrate TMDb API for movie details
 
 As a developer, I want to integrate with The Movie Database API so that I can fetch detailed information about movies dynamically.
 
@@ -432,7 +434,7 @@ As a developer, I want to integrate with The Movie Database API so that I can fe
 
 
 
-# Display movie poster images on movie pages
+## Display movie poster images on movie pages
 
 As a user, I want to see movie poster images on the movie page so that I can visually identify the movie.
 
@@ -450,7 +452,7 @@ As a user, I want to see movie poster images on the movie page so that I can vis
 
 
 
-# Display release date and runtime for movies
+## Display release date and runtime for movies
 
 As a user, I want to see the release date and runtime of a movie so that I can know when it came out and how long it is.
 
@@ -469,7 +471,7 @@ As a user, I want to see the release date and runtime of a movie so that I can k
 
 
 
-# Display a brief overview of each movie
+## Display a brief overview of each movie
 
 As a user, I want to see a brief overview of each movie so that I can understand its premise.
 
@@ -486,7 +488,7 @@ As a user, I want to see a brief overview of each movie so that I can understand
 
 
 
-# Style and optimise the movie details layout
+## Style and optimise the movie details layout
 
 As a user, I want the movie details to be displayed in a clean and visually appealing layout so that I can easily find the information I need.
 
@@ -503,7 +505,7 @@ As a user, I want the movie details to be displayed in a clean and visually appe
 
 
 
-# Integrate TMDb API for TV series details
+## Integrate TMDb API for TV series details
 
 As a developer, I want to integrate with The Movie Database API so that I can fetch detailed information about TV series dynamically.
 
@@ -521,7 +523,7 @@ As a developer, I want to integrate with The Movie Database API so that I can fe
 
 
 
-# Display TV series poster images
+## Display TV series poster images
 
 As a user, I want to see a TV series poster image on the series page so that I can visually identify the series.
 
@@ -539,7 +541,7 @@ As a user, I want to see a TV series poster image on the series page so that I c
 
 
 
-# Display TV series first and last aired dates
+## Display TV series first and last aired dates
 
 As a user, I want to see the first and last aired dates of a TV series so that I can understand its airing timeline.
 
@@ -557,7 +559,7 @@ As a user, I want to see the first and last aired dates of a TV series so that I
 
 
 
-# Display the number of seasons for a TV series
+## Display the number of seasons for a TV series
 
 As a user, I want to see the total number of seasons for a TV series so that I can understand the series' scope.
 
@@ -574,7 +576,7 @@ As a user, I want to see the total number of seasons for a TV series so that I c
 
 
 
-# Display a brief overview of a TV series
+## Display a brief overview of a TV series
 
 As a user, I want to see a brief overview of a TV series so that I can understand its premise.
 
@@ -591,7 +593,7 @@ As a user, I want to see a brief overview of a TV series so that I can understan
 
 
 
-# Style and optimise the TV series details layout
+## Style and optimise the TV series details layout
 
 As a user, I want the TV series details to be displayed in a clean and visually appealing layout so that I can easily find the information I need.
 
@@ -608,7 +610,7 @@ As a user, I want the TV series details to be displayed in a clean and visually 
 
 
 
-# Display footer on every page
+## Display footer on every page
 
 
 As a user, I want to see a footer on every page so that I can easily access the contact information and social media links from anywhere on the site.
@@ -623,7 +625,7 @@ As a user, I want to see a footer on every page so that I can easily access the 
 
 
 
-# Add contact information to the footer
+## Add contact information to the footer
 
 
 As a user, I want to see contact information in the footer so that I can easily find ways to contact the site.
@@ -640,7 +642,7 @@ As a user, I want to see contact information in the footer so that I can easily 
 
 
 
-# Add social media links to the footer
+## Add social media links to the footer
 
 
 As a user, I want to see social media links in the footer so that I can easily follow the site on social media.
@@ -656,7 +658,7 @@ As a user, I want to see social media links in the footer so that I can easily f
 
 
 
-# Make the footer responsive
+## Make the footer responsive
 
 
 As a user, I want the footer to be responsive so that it displays correctly on both desktop and mobile devices.
