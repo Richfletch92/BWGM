@@ -1,5 +1,7 @@
 # Binge-Watchers
 
+![Responsive Image](readme\images\responsive.png)
+
 ## Table of Contents
 - [Overview](#overview)
 - [UX Design Process](#ux-design-process)
@@ -22,13 +24,13 @@ Binge-Watchers is your ultimate destination for movie and TV series reviews, rat
   - [GitHub Projects Kanban Board](https://github.com/users/Richfletch92/projects/9)
   - I've also added my user stories to a separate [document](readme\userstories.md).
 - **Wireframes:**
-  - [Wireframes](https://github.com/Richfletch92/BWGM/wireframes) - Accessible wireframes with high colour contrast and alt text for visual elements.
+  - [Wireframes](readme\wireframes.md) - Here are my intial designs for the website. I had orignally planned to create another page for each individual season however due to time constrants I ran out of time so I've added that to my future plans. 
   - The design focuses on usability and accessibility for all users, including those using assistive technologies.
 - **Design Rationale:**
   - Key design decisions include a clean layout, a consistent colour scheme, and typography that adheres to accessibility guidelines (e.g., WCAG).
   - Considerations for users with disabilities include screen reader support and keyboard navigation.
-- **Reasoning For Any Final Changes:**
-  - Significant changes were made to enhance inclusivity and accessibility, such as improving contrast and ensuring all interactive elements are keyboard accessible.
+  **Design Changes**
+  - Although I have followed my designs quite closely some changes have been made due to user feedback and techinical issues. I had to move away from having the login and registration pages on modals due to having issues getitng the forms to work. I plan to implement this in the future. 
 
 ## Key Features
 - **Movie and TV Series Details:**
@@ -141,12 +143,14 @@ Binge-Watchers is your ultimate destination for movie and TV series reviews, rat
   - AI tools streamlined repetitive tasks, enabling focus on high-level development.
   - Efficiency gains included faster debugging, comprehensive testing, and improved code quality.
   - Challenges included contextual adjustments to AI-generated outputs, AI not always detecting what is causing the underlying issues and some AI not always being effective as others. 
+  - As I stated above, I think AI can be very effective however it's not always the most reliable and can have negative impacts if relied on too heavily. I found that manual testing can sometimes be more time effective than asking AI to fix your code. 
 
 ## Testing Summary
 - **Manual Testing:**
-  - **Devices and Browsers Tested:** Tested on various devices and browsers. I had friends and family who tested on a variety of mobile devices and computers. I also tested using dev tools to resize the screen to ensure my website was responsive 
+  - **Overview:** Testing was continuously done during developement, AI was used to check through code consistently to spot any typos and missing closing elements. 
+  - **Devices and Browsers Tested:** Tested on various devices Android and Apple devices. I had friends and family who tested on a variety of mobile devices and computers. Browsers used was Chrome, Edge and Safari. I also tested using dev tools to resize the screen to ensure my website was responsive.
   - **Features Tested:** CRUD operations, navigation, filtering, review submission, user registration and password resetting.
-  - **Results:** All critical features worked as expected, including accessibility checks.
+  - **Results:** All critical features worked as expected, including accessibility checks. 
 
 ## Future Enhancements
 - Enhance the filtering options to include more criteria.
@@ -156,3 +160,4 @@ Binge-Watchers is your ultimate destination for movie and TV series reviews, rat
 - Add further functionality to reviews by giving options to like/dislike reviews (models have been added for this functionality already and is reflected in my ERDs)
 - Allow users to add movies/series and pull relevant information using API 
 - Add ability to login using social media
+- Move the registration and login/logout pages into a modal
