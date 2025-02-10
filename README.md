@@ -2,6 +2,13 @@
 
 ![Responsive Image](readme/images/responsive.png)
 
+## Links
+
+- [Live Preview](https://binge-watchers-guide-ad640513c9e7.herokuapp.com/)
+- [GitHub](https://github.com/Richfletch92/BWGM)
+- [Project Board](https://github.com/users/Richfletch92/projects/9)
+
+
 ## Table of Contents
 - [Overview](#overview)
 - [UX Design Process](#ux-design-process)
