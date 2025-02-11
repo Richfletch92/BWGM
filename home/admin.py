@@ -3,6 +3,28 @@ from .models import MovieList, SeriesList, MovieReview, SeriesReview
 from django_summernote.admin import SummernoteModelAdmin
 
 
+def approve_reviews(modeladmin, request, queryset):
+    """
+    Custom admin action to approve selected reviews.
+    """
+    queryset.update(approved=True)
+    modeladmin.message_user(request, "Selected reviews have been approved.")
+
+
+approve_reviews.short_description = "Approve selected reviews"
+
+
+def unapprove_reviews(modeladmin, request, queryset):
+    """
+    Custom admin action to unapprove selected reviews.
+    """
+    queryset.update(approved=False)
+    modeladmin.message_user(request, "Selected reviews have been unapproved.")
+
+
+unapprove_reviews.short_description = "Unapprove selected reviews"
+
+
 @admin.register(MovieList)
 class MovieListAdmin(SummernoteModelAdmin):
     """
@@ -71,6 +93,7 @@ class MovieReviewAdmin(admin.ModelAdmin):
     search_fields = ('user__username', 'movie__title')
     list_filter = ('approved', 'date_created')
     ordering = ('-date_created',)
+    actions = [approve_reviews, unapprove_reviews]
 
 
 @admin.register(SeriesReview)
@@ -82,3 +105,4 @@ class SeriesReviewAdmin(admin.ModelAdmin):
     search_fields = ('user__username', 'series__title')
     list_filter = ('approved', 'date_created')
     ordering = ('-date_created',)
+    actions = [approve_reviews, unapprove_reviews]
