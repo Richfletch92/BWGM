@@ -27,18 +27,18 @@ Binge-Watchers is your ultimate destination for movie and TV series reviews, rat
 ## UX Design Process
 - **Link to User Stories in GitHub Projects:**
   - [GitHub Projects Kanban Board](https://github.com/users/Richfletch92/projects/9)
-  - I've also added my user stories to a separate [document](readme/userstories.md).
+  - I've added my user stories to a separate [document](readme/userstories.md).
 - **Wireframes:**
-  - [Wireframes](readme/wireframes.md) - Here are my initial designs for the website. I had originally planned to create another page for each individual season however due to time constraints I ran out of time so I've added that to my future plans. 
+  - [Wireframes](readme/wireframes.md) - Here are my initial designs for the website. I had originally planned to create a page for each individual season, however due to time constraints I was unable to do this. I plan to add this in the future. 
   - The design focuses on usability and accessibility for all users, including those using assistive technologies.
 - **Entity Relationship Diagram**
 
   ![ERDs](readme/images/erds/erds.png) 
-  - I followed my ERDs very closely as you can see there are a few extra tables due to future planning. I have used parts of the season table however there are more values being stored that were not used. I also have the review_comment and review_like tables again these are there for future plans. 
+  - I followed my ERDs very closely. There are additional tables which are currently not being used as these are for future developement. I have used parts of the season table, however there are more values being stored that were not used currently.
 - **Design Rationale:**
-  - Key design decisions include a clean layout, a consistent colour scheme, and typography that adheres to accessibility guidelines (e.g., WCAG).
+  - Key design decisions include a clean layout, a consistent colour scheme and typography that adheres to accessibility guidelines (e.g., WCAG).
   - Considerations for users with disabilities include screen reader support and keyboard navigation.
-  **Design Changes**
+- **Design Changes**
   - Although I have followed my designs quite closely some changes have been made due to user feedback and technical issues. I had to move away from having the login and registration pages on modals due to having issues getting the forms to work. I plan to implement this in the future. 
 - **Colour Scheme**
 
