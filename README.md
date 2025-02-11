@@ -8,7 +8,6 @@
 - [GitHub](https://github.com/Richfletch92/BWGM)
 - [Project Board](https://github.com/users/Richfletch92/projects/9)
 
-
 ## Table of Contents
 - [Overview](#overview)
 - [UX Design Process](#ux-design-process)
@@ -56,11 +55,10 @@ Binge-Watchers is your ultimate destination for movie and TV series reviews, rat
 - **Fonts**
 
   ![Fonts](readme/images/style/fonts.png)
-  I chose the font Atma for my Logo font and headings as a fun design/style to make my website more entriguing. I used Inter for it's easy readability and sleek design. 
+  I chose the font Atma for my Logo font and headings as a fun design/style to make my website more intriguing. I used Inter for its easy readability and sleek design. 
   - --logo-font: 'Atma', cursive;
   - --primary-font: 'Inter', sans-serif;
   
-
 ## Key Features
 - **Movie and TV Series Details:**
   - Fetches detailed information from the TMDb API, including images, release dates, runtime, and overviews.
@@ -177,23 +175,23 @@ Binge-Watchers is your ultimate destination for movie and TV series reviews, rat
 - **Manual Testing:**
   - **Overview:** Testing was continuously done during development, AI was used to check through code consistently to spot any typos and missing closing elements. Also all code was put through validators to ensure no issues with code. 
   - **Devices and Browsers Tested:** Tested on various devices Android and Apple devices. I had friends and family who tested on a variety of mobile devices and computers. The browsers used were Chrome, Edge and Safari. I also tested using dev tools to resize the screen to ensure my website was responsive.
-  - **Features Tested:** CRUD operations, navigation, filtering, review submission, user registration, password resetting and responsivity.
-  - **Results:** All features worked as expected. There was originally some issues with my unapproved reviews which was counting towards my total review count and they were effecting the average review score for each movie/series. I've since fixed this issue by having python check whether the review has been approved before counting it towards the mentioned values. Also users were able to submit multiple of the same review, so I got python to check whether the content of the review had already been submitted and gave an appropriate error. 
+  - **Features Tested:** CRUD operations, navigation, filtering, review submission, user registration, password resetting and responsiveness.
+  - **Results:** All features worked as expected. There were originally some issues with my unapproved reviews which were counting towards my total review count and they were affecting the average review score for each movie/series. I've since fixed this issue by having Python check whether the review has been approved before counting it towards the mentioned values. Also users were able to submit multiple of the same review, so I got Python to check whether the content of the review had already been submitted and gave an appropriate error. 
 
 ## Technologies & Credits
 - [HTML](https://en.wikipedia.org/wiki/HTML5) Used for main structure of the website.
-- [CSS](https://en.wikipedia.org/wiki/CSS) Used for styling and design
-- [Bootstrap](https://getbootstrap.com/) Used for layout through Bootstraps grid system.
+- [CSS](https://en.wikipedia.org/wiki/CSS) Used for styling and design.
+- [Bootstrap](https://getbootstrap.com/) Used for layout through Bootstrap's grid system.
 - [JavaScript](https://en.wikipedia.org/wiki/JavaScript) Used for added functionality to my reviews and filters.
 - [Python](https://en.wikipedia.org/wiki/Python_(programming_language)) Used for the main functionality of my website.
-- [Django](https://en.wikipedia.org/wiki/Django_(web_framework)) Used for the main backend frame work for website along with Python. 
+- [Django](https://en.wikipedia.org/wiki/Django_(web_framework)) Used for the main backend framework for website along with Python. 
 - [GitHub](https://github.com/dashboard) Used to host my repository.
 - [Heroku](https://www.heroku.com/) Used for deployment and hosting my website.
 - [VS Code](https://code.visualstudio.com/) Used as the main IDE for developing my project.
-- [Co-Pilot](https://copilot.microsoft.com/) The primary AI used for assisting in developing my project. It was used through VS Code with an built in extension from GitHub.
+- [Co-Pilot](https://copilot.microsoft.com/) The primary AI used for assisting in developing my project. It was used through VS Code with a built-in extension from GitHub.
 - [ChatGPT](https://chatgpt.com/) The secondary AI used for further consulting when Co-Pilot was failing to help or providing overly complex code.
 - [Balsamiq](http://balsamiq.com/) Used for creating and designing my wireframes.
-- [Google Fonts](https://fonts.google.com/) Used for retrieving font desgins for my website.
+- [Google Fonts](https://fonts.google.com/) Used for retrieving font designs for my website.
 - [Font Awesome](https://fontawesome.com/) Used for Icons on social media icons etc.
 - [Favicon.io](https://favicon.io/) Used for creating my favicons. 
 - [ImageColorPicker](https://imagecolorpicker.com/) Used for extracting the hex code from Plex's website.
@@ -211,4 +209,4 @@ Binge-Watchers is your ultimate destination for movie and TV series reviews, rat
 - Plex API integration 
 
 ## Special Mention
-- I also wanted to leave a thank you note to Charles Tack from my Bootcamp who did a thorough test of my website and gave me some great ideas for improvements. 
+- I also wanted to leave a thank you note to Charles Tack from my Bootcamp who did a thorough test of my website and gave me some great ideas for improvements.
