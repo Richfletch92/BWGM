@@ -4,7 +4,7 @@
 
 ## Links
 
-- [Live Preview](https://binge-watchers-guide-ad640513c9e7.herokuapp.com/)
+- [Live Preview](https://binge-watchers-guide-ad640513c9e7.herokuapp.com/) of deployed project.
 - [GitHub](https://github.com/Richfletch92/BWGM)
 - [Project Board](https://github.com/users/Richfletch92/projects/9)
 
@@ -24,7 +24,7 @@
 - [Future Enhancements](#future-enhancements)
 
 ## Overview
-Binge-Watchers is your ultimate destination for movie and TV series reviews, ratings, and recommendations. The platform allows users to explore detailed information about movies and TV series, submit reviews, and apply filters to find content that matches their preferences.
+Binge-Watchers is your ultimate destination for movie and TV series reviews, ratings, and recommendations. The platform allows users to explore detailed information about movies and TV series, submit reviews, and apply filters to find content that matches their preferences. I aim to use this website in the future to integrate with [Plex](https://www.plex.tv) so users can link their watch lists to my website. 
 
 ## UX Design Process
 - **Link to User Stories in GitHub Projects:**
@@ -34,12 +34,32 @@ Binge-Watchers is your ultimate destination for movie and TV series reviews, rat
   - [Wireframes](readme/wireframes.md) - Here are my initial designs for the website. I had originally planned to create another page for each individual season however due to time constraints I ran out of time so I've added that to my future plans. 
   - The design focuses on usability and accessibility for all users, including those using assistive technologies.
 - **Entity Relationship Diagram**
-  - [ERDs](readme/images/erds/erds.png) - I followed my ERDs very closely as you can see there are a few extra tables due to future planning. I have used parts of the season table however there are more values being stored that were not used. I also have the review_comment and review_like tables again these are there for future plans. 
+
+  ![ERDs](readme/images/erds/erds.png) 
+  - I followed my ERDs very closely as you can see there are a few extra tables due to future planning. I have used parts of the season table however there are more values being stored that were not used. I also have the review_comment and review_like tables again these are there for future plans. 
 - **Design Rationale:**
   - Key design decisions include a clean layout, a consistent colour scheme, and typography that adheres to accessibility guidelines (e.g., WCAG).
   - Considerations for users with disabilities include screen reader support and keyboard navigation.
   **Design Changes**
   - Although I have followed my designs quite closely some changes have been made due to user feedback and technical issues. I had to move away from having the login and registration pages on modals due to having issues getting the forms to work. I plan to implement this in the future. 
+- **Colour Scheme**
+
+  ![Colour Scheme](readme/images/style/colour-scheme.png)
+  I followed [Plex's](https://www.plex.tv) theme as to maintain continuity from Plex to my website. 
+  - --jonquil: #f7c600ff;
+  - --black: #000000ff;
+  - --eerie-black: #191919;
+  - --davys-gray: #505050;
+  - --battleship-gray: #919191;
+  - --white-smoke: #f2f0f1;
+  - --white: #ffffff;
+- **Fonts**
+
+  ![Fonts](readme/images/style/fonts.png)
+  I chose the font Atma for my Logo font and headings as a fun design/style to make my website more entriguing. I used Inter for it's easy readability and sleek design. 
+  - --logo-font: 'Atma', cursive;
+  - --primary-font: 'Inter', sans-serif;
+  
 
 ## Key Features
 - **Movie and TV Series Details:**
@@ -157,8 +177,27 @@ Binge-Watchers is your ultimate destination for movie and TV series reviews, rat
 - **Manual Testing:**
   - **Overview:** Testing was continuously done during development, AI was used to check through code consistently to spot any typos and missing closing elements. Also all code was put through validators to ensure no issues with code. 
   - **Devices and Browsers Tested:** Tested on various devices Android and Apple devices. I had friends and family who tested on a variety of mobile devices and computers. The browsers used were Chrome, Edge and Safari. I also tested using dev tools to resize the screen to ensure my website was responsive.
-  - **Features Tested:** CRUD operations, navigation, filtering, review submission, user registration and password resetting.
-  - **Results:** All critical features worked as expected, including accessibility checks. 
+  - **Features Tested:** CRUD operations, navigation, filtering, review submission, user registration, password resetting and responsivity.
+  - **Results:** All features worked as expected. There was originally some issues with my unapproved reviews which was counting towards my total review count and they were effecting the average review score for each movie/series. I've since fixed this issue by having python check whether the review has been approved before counting it towards the mentioned values. Also users were able to submit multiple of the same review, so I got python to check whether the content of the review had already been submitted and gave an appropriate error. 
+
+## Technologies & Credits
+- [HTML](https://en.wikipedia.org/wiki/HTML5) Used for main structure of the website.
+- [CSS](https://en.wikipedia.org/wiki/CSS) Used for styling and design
+- [Bootstrap](https://getbootstrap.com/) Used for layout through Bootstraps grid system.
+- [JavaScript](https://en.wikipedia.org/wiki/JavaScript) Used for added functionality to my reviews and filters.
+- [Python](https://en.wikipedia.org/wiki/Python_(programming_language)) Used for the main functionality of my website.
+- [Django](https://en.wikipedia.org/wiki/Django_(web_framework)) Used for the main backend frame work for website along with Python. 
+- [GitHub](https://github.com/dashboard) Used to host my repository.
+- [Heroku](https://www.heroku.com/) Used for deployment and hosting my website.
+- [VS Code](https://code.visualstudio.com/) Used as the main IDE for developing my project.
+- [Co-Pilot](https://copilot.microsoft.com/) The primary AI used for assisting in developing my project. It was used through VS Code with an built in extension from GitHub.
+- [ChatGPT](https://chatgpt.com/) The secondary AI used for further consulting when Co-Pilot was failing to help or providing overly complex code.
+- [Balsamiq](http://balsamiq.com/) Used for creating and designing my wireframes.
+- [Google Fonts](https://fonts.google.com/) Used for retrieving font desgins for my website.
+- [Font Awesome](https://fontawesome.com/) Used for Icons on social media icons etc.
+- [Favicon.io](https://favicon.io/) Used for creating my favicons. 
+- [ImageColorPicker](https://imagecolorpicker.com/) Used for extracting the hex code from Plex's website.
+- [TMDb](https://www.themoviedb.org/?language=en-GB) API from their website was used to generate all of my images and details for each movie/series.
 
 ## Future Enhancements
 - Enhance the filtering options to include more criteria.
@@ -169,3 +208,7 @@ Binge-Watchers is your ultimate destination for movie and TV series reviews, rat
 - Allow users to add movies/series and pull relevant information using API 
 - Add ability to login using social media
 - Move the registration and login/logout pages into a modal
+- Plex API integration 
+
+## Special Mention
+- I also wanted to leave a thank you note to Charles Tack from my Bootcamp who did a thorough test of my website and gave me some great ideas for improvements. 

@@ -93,13 +93,12 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="draftModalLabel">Save Draft</h5>
+                <h5 class="modal-title" id="draftModalLabel">Leave a Review</h5>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
                     aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 {% if user.is_authenticated %}
-                <h3>Leave a review:</h3>
                 <p>All reviews need to be approved by an admin.</p>
                 <p>Posting as: <strong>{{ user.username }}</strong></p>
                 <form id="reviewForm" method="post" class="review-form" style="margin-top: 1.3em;">
