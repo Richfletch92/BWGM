@@ -39,24 +39,24 @@ Binge-Watchers is your ultimate destination for movie and TV series reviews, rat
   - Key design decisions include a clean layout, a consistent colour scheme and typography that adheres to accessibility guidelines (e.g., WCAG).
   - Considerations for users with disabilities include screen reader support and keyboard navigation.
 - **Design Changes**
-  - Although I have followed my designs quite closely some changes have been made due to user feedback and technical issues. I had to move away from having the login and registration pages on modals due to having issues getting the forms to work. I plan to implement this in the future. 
+  - Although I have followed my designs quite closely some changes have been made due to user feedback and technical issues. I changed the login and registration pages from modals due to having issues getting the forms to work. I plan to implement this in the future. 
 - **Colour Scheme**
 
   ![Colour Scheme](readme/images/style/colour-scheme.png)
-  I followed [Plex's](https://www.plex.tv) theme as to maintain continuity from Plex to my website. 
-  - --jonquil: #f7c600ff;
-  - --black: #000000ff;
-  - --eerie-black: #191919;
-  - --davys-gray: #505050;
-  - --battleship-gray: #919191;
-  - --white-smoke: #f2f0f1;
-  - --white: #ffffff;
+  I followed [Plex's](https://www.plex.tv) colour scheme as to maintain continuity from Plex to my website. 
+  - Jonquil: #f7c600ff;
+  - Black: #000000ff;
+  - Eerie-Black: #191919;
+  - Davys-Gray: #505050;
+  - Battleship-Gray: #919191;
+  - White-Smoke: #f2f0f1;
+  - White: #ffffff;
 - **Fonts**
 
   ![Fonts](readme/images/style/fonts.png)
   I chose the font Atma for my Logo font and headings as a fun design/style to make my website more intriguing. I used Inter for its easy readability and sleek design. 
-  - --logo-font: 'Atma', cursive;
-  - --primary-font: 'Inter', sans-serif;
+  - Logo-Font: 'Atma', cursive;
+  - Primary-Font: 'Inter', sans-serif;
 
 [Return to Contents](#table-of-contents)
 
@@ -72,17 +72,17 @@ Binge-Watchers is your ultimate destination for movie and TV series reviews, rat
 
 - **Filtering Options:**
   - Users can filter content based on genre, release year, and rating.
-  - Filtering options are available on both the movies and TV series pages.
+  - Filtering options are available on both the movie and TV series pages.
   - Filters can be combined to narrow down results further.
   - Includes a "Clear Filters" button to reset all applied filters.
 
 - **Search Functionality:**
   - Provides a search bar on the homepage and other relevant pages.
-  - Users can search for movies and TV series by title or genre.
+  - Users can search for movies and TV series by title.
 
 - **Responsive Design:**
   - The website layout is fully responsive and adapts to different screen sizes.
-  - Ensures a consistent and user-friendly experience across desktop, tablet, and mobile devices.
+  - Ensures a consistent and user-friendly experience across desktop, tablet and mobile devices.
 
 - **Accessibility:**
   - Designed with accessibility in mind, adhering to WCAG guidelines.
@@ -94,7 +94,6 @@ Binge-Watchers is your ultimate destination for movie and TV series reviews, rat
 
 - **User Authentication:**
   - Provides user registration and login functionality.
-  - Supports social media login options for quick and easy access.
   - Ensures secure handling of user data with proper validation and error handling.
   - Users can reset their password via email. 
 
@@ -149,29 +148,29 @@ Binge-Watchers is your ultimate destination for movie and TV series reviews, rat
 ### Use Cases and Reflections:
 
   - **Code Creation:** 
-    - Reflection: I used Co-pilot through the majority of my project by using inline editing and chat. I had a lot of problems with Co-pilot consistently trying to override code that wasn't needed. I also had issues with the code being overly complex or not doing what I'd asked it to help create. I actually found ChatGPT to be more helpful in a lot of instances where Co-pilot was failing. I used a mix of question-and-answer prompts and multi-step prompts when getting AI to assist in my code creation. Sometimes Co-pilot would need further info as the original prompts wouldn't create what I'd asked it to do. 
+    - Reflection: I used Co-pilot through the majority of my project by using inline editing and chat. I had a lot of problems with Co-pilot consistently trying to override code that wasn't needed. I also had issues with the code being overly complex or not doing what I'd asked it to create. I found ChatGPT to be more helpful in a lot of instances where Co-pilot was failing. I used a mix of question-and-answer prompts and multi-step prompts when getting AI to assist in my code creation. Sometimes Co-pilot would need further info as the original prompts wouldn't create what I'd asked it to do. 
 
-    - Examples: When creating my fetch_data and utils I started using Co-pilot however I couldn't get Co-pilot to write the code effectively and get it to work. When asking ChatGPT to write the same functions the code worked straight away with little to no editing required had I used ChatGPT straight away I would have saved myself some considerable time.
+    - Examples: When creating my fetch_data and utils I started using Co-pilot, however I couldn't get Co-pilot to write the code effectively and get it to work. When asking ChatGPT to write the same functions the code worked straight away with little to no editing required. Had I used ChatGPT straight away I would have saved myself a considerable amount of time.
     
   - **Debugging:** 
-    - Reflection: Co-pilot was excellent for spotting smaller bugs and helped identify an issue causing overflow on the right-hand side of my screen. Whilst Co-pilot couldn't actually identify the issue itself it recommended adding a wildcard selector which added a border to each element. This allowed me to identify that my footer was overflowing. I did have a few issues with Co-pilot actually delaying me with some debugging. When I was trying to implement users being able to edit their reviews I was having an issue with the review form not prefilling. It was due to my JavaScript file not being correctly linked to the HTML file. There was a small typo in the file name set as script.js and not scripts.js. Co-pilot advised some real extensive and over-the-top fixes but didn't advise once about the potential typo. I wasted a good 2-3 hours trying with Co-pilot to fix the issue. My big takeaway from using AI is that I've been relying too heavily on using Co-pilot where manual testing can be a lot more time effective.
+    - Reflection: Co-pilot was excellent for spotting smaller bugs and helped identify an issue causing overflow on the right-hand side of my screen, whilst Co-pilot couldn't identify the issue. It recommended adding a wildcard selector which added a border to each element. This allowed me to identify that my footer was overflowing. I did have a few issues with Co-pilot delaying me with debugging. When I was trying to implement users being able to edit their own reviews, I had an issue with the review form not prefilling. This was due to my JavaScript file not being correctly linked to the HTML file. There was a small typo in the file name set as script.js and not scripts.js. Co-pilot advised some extensive and over-the-top fixes but didn't advise once about the potential typo. I spent 2-3 hours trying to fix the issue using Co-pilot. In conclusion, I have learned that relying on AI too heavily instead of manual testing can be less time effective.
 
   - **Performance and UX Optimisation:** 
-    - Reflection: Although I came up with the main design for the website, it was handy to get Co-pilot to create a lot of the forms using my original designs as templates to save time. I would prompt Co-pilot to use the design of my current form to use it as a template to design the other forms.
+    - Reflection: Although I came up with the main design for the website, Co-pilot was useful when it came to creating forms using my original designs as templates. This saved me a considerable amount of time, allowing me to use my time more effectively. 
 
 - **Overall Impact:**
   - AI tools streamlined repetitive tasks, enabling focus on high-level development.
   - Efficiency gains included faster debugging, comprehensive testing, and improved code quality.
   - Challenges included contextual adjustments to AI-generated outputs, AI not always detecting what is causing the underlying issues and some AI not always being effective as others. 
-  - As I stated above, I think AI can be very effective however it's not always the most reliable and can have negative impacts if relied on too heavily. I found that manual testing can sometimes be more time effective than asking AI to fix your code. 
+  - As stated above, I think AI can be very effective however it's not always the most reliable which can have negative impacts if relied on too heavily. I found that manual testing can sometimes be more time effective than asking AI to fix your code. 
 
 [Return to Contents](#table-of-contents)
 
 ## Testing Summary
 - **Verification and Validation:**
   - Steps taken to verify the deployed version include functionality checks and accessibility tests.
-  - Use of [Lighthouse](https://github.com/GoogleChrome/lighthouse) to check performance and accessibility. Accessibility is excellent scoring 100 on every page. Performance could have been better on mobile. Main issues with performance were due to the images gotten from TMDb API. [Results](readme/lighthouse.md)
-  - [W3C HTML Validator](https://validator.w3.org/) used to validate HTML. All results passed apart from my registration page which unfortunately was out of my control due to AllAuth's forms having issues [Results](readme/html.md)
+  - Use of [Lighthouse](https://github.com/GoogleChrome/lighthouse) to check performance and accessibility. Accessibility is excellent scoring 100 on every page. Performance could have been better on mobile. Main issues with performance were due to the images improted from TMDb API. [Results](readme/lighthouse.md)
+  - [W3C HTML Validator](https://validator.w3.org/) used to validate HTML. All results passed except the registration page, which unfortunately was out of my control. This was due to AllAuth's forms having issues which are shown in my [Results](readme/html.md)
   - [W3C CSS Validator](https://jigsaw.w3.org/css-validator/) used to validate CSS [Results](readme/css.md)
   - [JSHint JavaScript Validator](https://jshint.com/) used to validate JS [Results](readme/js.md)
   - [CI Python Linter Validator](https://pep8ci.herokuapp.com/) used to validate Python [Results](readme/python.md)
@@ -179,10 +178,10 @@ Binge-Watchers is your ultimate destination for movie and TV series reviews, rat
   - Use of environment variables for sensitive data.
   - Ensured DEBUG mode is disabled in production.
 - **Manual Testing:**
-  - **Overview:** Testing was continuously done during development, AI was used to check through code consistently to spot any typos and missing closing elements. Also all code was put through validators to ensure no issues with code. 
-  - **Devices and Browsers Tested:** Tested on various devices Android and Apple devices. I had friends and family who tested on a variety of mobile devices and computers. The browsers used were Chrome, Edge and Safari. I also tested using dev tools to resize the screen to ensure my website was responsive.
+  - **Overview:** Testing was continuously done during development, AI was used to check through code consistently to spot any typos and missing closing elements. All code was tested with validators to ensure there wasn't any issues with the code. 
+  - **Devices and Browsers Tested:** Tested on various Android and Apple devices. Friends and family tested on a variety of mobile devices and computers. The browsers used were Chrome, Edge and Safari. I also tested using dev tools to resize the screen, ensuring my website was responsive.
   - **Features Tested:** CRUD operations, navigation, filtering, review submission, user registration, password resetting and responsiveness.
-  - **Results:** All features worked as expected. There were originally some issues with my unapproved reviews which were counting towards my total review count and they were affecting the average review score for each movie/series. I've since fixed this issue by having Python check whether the review has been approved before counting it towards the mentioned values. Also users were able to submit multiple of the same review, so I got Python to check whether the content of the review had already been submitted and gave an appropriate error. 
+  - **Results:** All features worked as expected. There were originally some issues with my unapproved reviews counting towards the total review count and average rating. I fixed this issue by having Python check whether the review has been approved before counting it towards the mentioned values. Users were also able to submit multiple reviews including the same content. To fix this used Python to check whether the content of the review had already been submitted and gave an appropriate error message. 
 
 [Return to Contents](#table-of-contents)
 
@@ -195,15 +194,15 @@ Binge-Watchers is your ultimate destination for movie and TV series reviews, rat
 - [Django](https://en.wikipedia.org/wiki/Django_(web_framework)) Used for the main backend framework for website along with Python. 
 - [GitHub](https://github.com/dashboard) Used to host my repository.
 - [Heroku](https://www.heroku.com/) Used for deployment and hosting my website.
-- [VS Code](https://code.visualstudio.com/) Used as the main IDE for developing my project.
+- [VS Code](https://code.visualstudio.com/) Used for the main IDE for developing my project.
 - [Co-Pilot](https://copilot.microsoft.com/) The primary AI used for assisting in developing my project. It was used through VS Code with a built-in extension from GitHub.
 - [ChatGPT](https://chatgpt.com/) The secondary AI used for further consulting when Co-Pilot was failing to help or providing overly complex code.
 - [Balsamiq](http://balsamiq.com/) Used for creating and designing my wireframes.
 - [Google Fonts](https://fonts.google.com/) Used for retrieving font designs for my website.
-- [Font Awesome](https://fontawesome.com/) Used for Icons on social media icons etc.
+- [Font Awesome](https://fontawesome.com/) Used for social media icons etc.
 - [Favicon.io](https://favicon.io/) Used for creating my favicons. 
 - [ImageColorPicker](https://imagecolorpicker.com/) Used for extracting the hex code from Plex's website.
-- [TMDb](https://www.themoviedb.org/?language=en-GB) API from their website was used to generate all of my images and details for each movie/series.
+- [TMDb](https://www.themoviedb.org/?language=en-GB) Used for API to extract all images and details relating to movies and series. 
 
 [Return to Contents](#table-of-contents)
 
