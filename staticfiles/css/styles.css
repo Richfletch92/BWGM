@@ -34,6 +34,21 @@ body {
     flex: 1;
 }
 
+body .btn.btn-primary:active {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+}
+
+body .btn.btn-secondary:active {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+body .btn.btn-outline-success:active {
+    color: var(--primary-color);
+    background-color: var(--secondary-color);
+}
+
 /* Navbar Styling */
 .navbar {
     border: 2px solid #000000;
@@ -489,6 +504,10 @@ h2 {
     text-transform: uppercase;
 }
 
+.btn-edit:hover {
+    background-color: var(--primary-color);
+}
+
 .btn-delete {
     background-color: var(--secondary-color);
     color: var(--primary-color);
@@ -498,6 +517,10 @@ h2 {
     font-weight: bold;
     width: 100px;
     text-transform: uppercase;
+}
+
+.btn-delete:hover {
+    background-color: var(--secondary-color);
 }
 
 .btn-delete:hover {
