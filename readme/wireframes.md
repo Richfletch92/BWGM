@@ -23,70 +23,70 @@
 
 ## Desktop Wireframes
 
-### Home
+### Home (Desktop)
 
 ![Home - Desktop](images/wireframes/home-desktop.png)
 
-### Movies
+### Movies (Desktop)
 
 ![Movies - Desktop](images/wireframes/movies-desktop.png)
 
-### Movie Details
+### Movie Details (Desktop)
 
 ![Movie Details - Desktop](images/wireframes/movie-details-desktop.png)
 
-### Series
+### Series (Desktop)
 
 ![Series - Desktop](images/wireframes/series-desktop.png)
 
-### Series Details
+### Series Details (Desktop)
 
 ![Series Details - Desktop](images/wireframes/series-details-desktop.png)
 
-### Season Details
+### Season Details (Desktop)
 
 ![Season Details - Desktop](images/wireframes/season-details-desktop.png)
 
 ## Tablet Wireframes
 
-### Home
+### Home (Tablet)
 
 ![Home - Tablet](images/wireframes/home-tablet.png)
 
-### Movies
+### Movies (Tablet)
 
 ![Movies - Tablet](images/wireframes/movies-tablet.png)
 
-### Movie Details
+### Movie Details (Tablet)
 
 ![Movie Details - Tablet](images/wireframes/movie-detail-tablet.png)
 
-### Series
+### Series (Tablet)
 
 ![Series - Tablet](images/wireframes/series-tablet.png)
 
-### Series Details
+### Series Details (Tablet)
 
 ![Series Details - Tablet](images/wireframes/series-details-tablet.png)
 
 ## Mobile Wireframes
 
-### Home
+### Home (Mobile)
 
 ![Home - Mobile](images/wireframes/home-mobile.png)
 
-### Movies
+### Movies (Mobile)
 
 ![Movies - Mobile](images/wireframes/movies-mobile.png)
 
-### Movie Details
+### Movie Details (Mobile)
 
 ![Movie Details - Mobile](images/wireframes/movie-details-mobile.png)
 
-### Series
+### Series (Mobile)
 
 ![Series - Mobile](images/wireframes/series-mobile.png)
 
-### Series Details
+### Series Details (Mobile)
 
 ![Series Details - Mobile](images/wireframes/series-details-mobile.png)
