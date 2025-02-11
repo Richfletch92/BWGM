@@ -523,10 +523,6 @@ h2 {
     background-color: var(--secondary-color);
 }
 
-.btn-delete:hover {
-    opacity: 0.9;
-}
-
 .draft-btn {
     width: 100%;
     padding: 10px;
@@ -541,6 +537,7 @@ h2 {
 
 .draft-btn:hover {
     opacity: 0.9;
+    color: var(--font-color)
 }
 
 /* Scrollable Reviews Styling */
