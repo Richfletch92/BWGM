@@ -209,13 +209,13 @@ Binge-Watchers is your ultimate destination for movie and TV series reviews, rat
 ## Future Enhancements
 - Enhance the filtering options to include more criteria.
 - Improve the design and layout based on user feedback.
-- Add season pages and episode information (models have been added for this functionality already and is reflected in my ERDs)
-- Give users the ability to add comments to reviews (models have been added for this functionality already and is reflected in my ERDs)
-- Add further functionality to reviews by giving options to like/dislike reviews (models have been added for this functionality already and is reflected in my ERDs)
-- Allow users to add movies/series and pull relevant information using API 
-- Add ability to login using social media
-- Move the registration and login/logout pages into a modal
-- Plex API integration 
+- Add season pages and episode information (models have been added for this functionality already and is reflected in my ERDs).
+- Give users the ability to add comments to reviews (models have been added for this functionality already and is reflected in my ERDs).
+- Add further functionality to reviews by giving options to like/dislike reviews (models have been added for this functionality already and is reflected in my ERDs).
+- Allow users to add movies/series and pull relevant information using API.
+- Add ability to login using social media accounts.
+- Move registration and login/logout pages into a modal.
+- Plex API integration.
 
 [Return to Contents](#table-of-contents)
 
