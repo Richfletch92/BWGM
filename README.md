@@ -21,9 +21,12 @@
   - [Use Cases and Reflections](#use-cases-and-reflections)
 - [Testing Summary](#testing-summary)
 - [Future Enhancements](#future-enhancements)
+- [Special Mention](#special-mention)
 
 ## Overview
 Binge-Watchers is your ultimate destination for movie and TV series reviews, ratings, and recommendations. The platform allows users to explore detailed information about movies and TV series, submit reviews, and apply filters to find content that matches their preferences. I aim to use this website in the future to integrate with [Plex](https://www.plex.tv) so users can link their watch lists to my website. 
+
+[Return to Contents](#table-of-contents)
 
 ## UX Design Process
 - **Link to User Stories in GitHub Projects:**
@@ -58,7 +61,9 @@ Binge-Watchers is your ultimate destination for movie and TV series reviews, rat
   I chose the font Atma for my Logo font and headings as a fun design/style to make my website more intriguing. I used Inter for its easy readability and sleek design. 
   - --logo-font: 'Atma', cursive;
   - --primary-font: 'Inter', sans-serif;
-  
+
+[Return to Contents](#table-of-contents)
+
 ## Key Features
 - **Movie and TV Series Details:**
   - Fetches detailed information from the TMDb API, including images, release dates, runtime, and overviews.
@@ -111,6 +116,8 @@ Binge-Watchers is your ultimate destination for movie and TV series reviews, rat
   - Features are designed to address the needs of diverse users, including those with SEND.
   - Ensures that the platform is inclusive and accessible to all users.
 
+[Return to Contents](#table-of-contents)
+
 ## Deployment
 - **Platform:** Heroku
 - **High-Level Deployment Steps:** 
@@ -150,6 +157,8 @@ Binge-Watchers is your ultimate destination for movie and TV series reviews, rat
   - Use of environment variables for sensitive data.
   - Ensured DEBUG mode is disabled in production.
 
+[Return to Contents](#table-of-contents)
+
 ## AI Implementation and Orchestration
 
 ### Use Cases and Reflections:
@@ -171,12 +180,16 @@ Binge-Watchers is your ultimate destination for movie and TV series reviews, rat
   - Challenges included contextual adjustments to AI-generated outputs, AI not always detecting what is causing the underlying issues and some AI not always being effective as others. 
   - As I stated above, I think AI can be very effective however it's not always the most reliable and can have negative impacts if relied on too heavily. I found that manual testing can sometimes be more time effective than asking AI to fix your code. 
 
+[Return to Contents](#table-of-contents)
+
 ## Testing Summary
 - **Manual Testing:**
   - **Overview:** Testing was continuously done during development, AI was used to check through code consistently to spot any typos and missing closing elements. Also all code was put through validators to ensure no issues with code. 
   - **Devices and Browsers Tested:** Tested on various devices Android and Apple devices. I had friends and family who tested on a variety of mobile devices and computers. The browsers used were Chrome, Edge and Safari. I also tested using dev tools to resize the screen to ensure my website was responsive.
   - **Features Tested:** CRUD operations, navigation, filtering, review submission, user registration, password resetting and responsiveness.
   - **Results:** All features worked as expected. There were originally some issues with my unapproved reviews which were counting towards my total review count and they were affecting the average review score for each movie/series. I've since fixed this issue by having Python check whether the review has been approved before counting it towards the mentioned values. Also users were able to submit multiple of the same review, so I got Python to check whether the content of the review had already been submitted and gave an appropriate error. 
+
+[Return to Contents](#table-of-contents)
 
 ## Technologies & Credits
 - [HTML](https://en.wikipedia.org/wiki/HTML5) Used for main structure of the website.
@@ -197,6 +210,8 @@ Binge-Watchers is your ultimate destination for movie and TV series reviews, rat
 - [ImageColorPicker](https://imagecolorpicker.com/) Used for extracting the hex code from Plex's website.
 - [TMDb](https://www.themoviedb.org/?language=en-GB) API from their website was used to generate all of my images and details for each movie/series.
 
+[Return to Contents](#table-of-contents)
+
 ## Future Enhancements
 - Enhance the filtering options to include more criteria.
 - Improve the design and layout based on user feedback.
@@ -208,5 +223,9 @@ Binge-Watchers is your ultimate destination for movie and TV series reviews, rat
 - Move the registration and login/logout pages into a modal
 - Plex API integration 
 
+[Return to Contents](#table-of-contents)
+
 ## Special Mention
 - I also wanted to leave a thank you note to Charles Tack from my Bootcamp who did a thorough test of my website and gave me some great ideas for improvements.
+
+[Return to Contents](#table-of-contents)
