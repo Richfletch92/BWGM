@@ -146,17 +146,6 @@ Binge-Watchers is your ultimate destination for movie and TV series reviews, rat
   8. Click on settings and reveal config vars. Then enter all hidden variables from your env.py
   9. You can now deploy your project. 
 
-- **Verification and Validation:**
-  - Steps taken to verify the deployed version include functionality checks and accessibility tests.
-  - Use of [Lighthouse](https://github.com/GoogleChrome/lighthouse) to check performance and accessibility. Accessibility is excellent scoring 100 on every page. Performance could have been better on mobile. Main issues with performance were due to the images gotten from TMDb API. [Results](readme/lighthouse.md)
-  - [W3C HTML Validator](https://validator.w3.org/) used to validate HTML. All results passed apart from my registration page which unfortunately was out of my control due to AllAuth's forms having issues [Results](readme/html.md)
-  - [W3C CSS Validator](https://jigsaw.w3.org/css-validator/) used to validate CSS [Results](readme/css.md)
-  - [JSHint JavaScript Validator](https://jshint.com/) used to validate JS [Results](readme/js.md)
-  - [CI Python Linter Validator](https://pep8ci.herokuapp.com/) used to validate Python [Results](readme/python.md)
-- **Security Measures:**
-  - Use of environment variables for sensitive data.
-  - Ensured DEBUG mode is disabled in production.
-
 [Return to Contents](#table-of-contents)
 
 ## AI Implementation and Orchestration
@@ -183,6 +172,16 @@ Binge-Watchers is your ultimate destination for movie and TV series reviews, rat
 [Return to Contents](#table-of-contents)
 
 ## Testing Summary
+- **Verification and Validation:**
+  - Steps taken to verify the deployed version include functionality checks and accessibility tests.
+  - Use of [Lighthouse](https://github.com/GoogleChrome/lighthouse) to check performance and accessibility. Accessibility is excellent scoring 100 on every page. Performance could have been better on mobile. Main issues with performance were due to the images gotten from TMDb API. [Results](readme/lighthouse.md)
+  - [W3C HTML Validator](https://validator.w3.org/) used to validate HTML. All results passed apart from my registration page which unfortunately was out of my control due to AllAuth's forms having issues [Results](readme/html.md)
+  - [W3C CSS Validator](https://jigsaw.w3.org/css-validator/) used to validate CSS [Results](readme/css.md)
+  - [JSHint JavaScript Validator](https://jshint.com/) used to validate JS [Results](readme/js.md)
+  - [CI Python Linter Validator](https://pep8ci.herokuapp.com/) used to validate Python [Results](readme/python.md)
+- **Security Measures:**
+  - Use of environment variables for sensitive data.
+  - Ensured DEBUG mode is disabled in production.
 - **Manual Testing:**
   - **Overview:** Testing was continuously done during development, AI was used to check through code consistently to spot any typos and missing closing elements. Also all code was put through validators to ensure no issues with code. 
   - **Devices and Browsers Tested:** Tested on various devices Android and Apple devices. I had friends and family who tested on a variety of mobile devices and computers. The browsers used were Chrome, Edge and Safari. I also tested using dev tools to resize the screen to ensure my website was responsive.
