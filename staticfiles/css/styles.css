@@ -721,3 +721,125 @@ footer .social-icons a i {
 footer .social-icons a:hover i {
     color: var(--primary-color); /* Change color on hover */
 }
+
+/* Responsive Styling */
+@media (min-height: 900px) {
+    .scroll-container-vertical {
+        max-height: 700px; /* Increase the max-height for taller screens */
+    }
+
+}
+
+/* Media Queries for screens larger than 1080p */
+@media (min-width: 1920px) {
+    body {
+        font-size: 1.1rem; /* Increase the base font size */
+    }
+
+    .navbar {
+        margin: 30px;
+        border-radius: 10px;
+    }
+
+    .search-form {
+        max-width: 600px;
+    }
+
+    .alert {
+        font-size: 1.2rem;
+    }
+
+    .scroll-container img {
+        width: 250px;
+        height: 375px;
+    }
+
+    .poster img {
+        width: 100%;
+        height: auto;
+    }
+
+    .scroll-container-vertical {
+        max-height: 700px;
+    }
+
+    .login-form,
+    .signup-form,
+    .logout-form,
+    .password_reset_form {
+        max-width: 500px;
+    }
+
+    .review-form {
+        max-width: 800px;
+    }
+
+    .scrollable-reviews {
+        max-height: 700px;
+    }
+
+    .scroll-container-seasons img {
+        width: 200px;
+    }
+
+    footer {
+        font-size: 1rem;
+    }
+}
+
+/* Media Queries for screens larger than 1440p */
+@media (min-width: 2560px) {
+    body {
+        font-size: 1.15rem; /* Increase the base font size */
+    }
+
+    .navbar {
+        margin: 35px;
+        border-radius: 12px;
+    }
+
+    .search-form {
+        max-width: 700px;
+    }
+
+    .alert {
+        font-size: 1.25rem;
+    }
+
+    .scroll-container img {
+        width: 275px;
+        height: 412px;
+    }
+
+    .poster img {
+        width: 100%;
+        height: auto;
+    }
+
+    .scroll-container-vertical {
+        max-height: 800px;
+    }
+
+    .login-form,
+    .signup-form,
+    .logout-form,
+    .password_reset_form {
+        max-width: 550px;
+    }
+
+    .review-form {
+        max-width: 900px;
+    }
+
+    .scrollable-reviews {
+        max-height: 800px;
+    }
+
+    .scroll-container-seasons img {
+        width: 225px;
+    }
+
+    footer {
+        font-size: 1.1rem;
+    }
+}
