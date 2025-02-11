@@ -11,15 +11,11 @@
 ## Table of Contents
 - [Overview](#overview)
 - [UX Design Process](#ux-design-process)
-  - [Link to User Stories in GitHub Projects](#link-to-user-stories-in-github-projects)
-  - [Wireframes](#wireframes)
-  - [Design Rationale](#design-rationale)
-  - [Reasoning For Any Final Changes](#reasoning-for-any-final-changes)
 - [Key Features](#key-features)
 - [Deployment](#deployment)
 - [AI Implementation and Orchestration](#ai-implementation-and-orchestration)
-  - [Use Cases and Reflections](#use-cases-and-reflections)
 - [Testing Summary](#testing-summary)
+- [Technologies & Credits](#technologies--credits)
 - [Future Enhancements](#future-enhancements)
 - [Special Mention](#special-mention)
 
